@@ -45,7 +45,7 @@ public class IndexController implements Serializable {
             if (conn.getResponseCode() == 204) {
                /* throw new RuntimeException("Failed : HTTP error code : "
                         + conn.getResponseCode());*/
-              redireccion = "/main?faces-redirect=true";
+              redireccion = "/prueba?faces-redirect=true";
               lg.setClave(this.usuario);
               FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", lg);                             
             } else{
@@ -57,7 +57,7 @@ public class IndexController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "ERROR!"));
             
         }
-        return redireccion;
+        return "/PosicionC?faces-redirect=true";
     }
 
     public void cerrarSesion() {

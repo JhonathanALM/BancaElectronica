@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Banca Electronica</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="description" content="au theme template"/>
+        <meta name="author" content="Hau Nguyen"/>
+        <meta name="keywords" content="au theme template"/>
+        <!-- Fontfaces CSS-->
+        <link href="css/font-face.css" rel="stylesheet" media="all"></link>
+        <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all"></link>
+        <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all"></link>
+        <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all"></link>
+
+        <!-- Bootstrap CSS-->
+        <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all"></link>
+
+        <!-- Vendor CSS-->
+        <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all"></link>
+        <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all"></link>
+        <link href="vendor/wow/animate.css" rel="stylesheet" media="all"></link>
+        <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all"></link>
+        <link href="vendor/slick/slick.css" rel="stylesheet" media="all"></link>
+        <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all"></link>
+        <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all"></link>
+
+        <!-- Main CSS-->
+        <link href="css/theme.css" rel="stylesheet" media="all"></link>
+    </h:head>
+
+    <h:body>
+
+
+        <div id="top" class="top">
+            <ui:insert name="top">Top</ui:insert>
+        </div>
+        <div>            
+
+            <div class="page-wrapper">
+                <!-- HEADER MOBILE-->
+                <header class="header-mobile d-block d-lg-none">
+                    <div class="header-mobile__bar">
+                        <div class="container-fluid">
+                            <div class="header-mobile-inner">
+                                <a class="logo" href="index.html">
+                                    BANCO
+                                </a>
+                                <button class="hamburger hamburger--slider" type="button">
+                                    <span class="hamburger-box">
+                                        <span class="hamburger-inner"></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="navbar-mobile">
+                        <div class="container-fluid">
+                            <ul class="navbar-mobile__list list-unstyled">
+                                <li>
+                                    <a href="PosicionC.xhtml">
+                                        <i class="fas fa-chart-bar"></i>Posición Consolidada</a>
+                                </li>
+                                <li class="has-sub">
+                                    <a class="js-arrow" href="#">
+                                        <i class="fas fa-copy"></i>Préstamos</a>
+                                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                        <li>
+                                            <a href="Prestamos.xhtml">Detalle de Préstamos</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a class="js-arrow" href="#">
+                                        <i class="fas fa-copy"></i>Transferencias</a>
+                                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                        <li>
+                                            <a href="login.html">Activación</a>
+                                        </li>
+                                        <li>
+                                            <a href="register.html">Transferencia Directa</a>
+                                        </li>
+                                        <li>
+                                            <a href="forget-pass.html">Transferencia Otros</a>
+                                        </li>
+                                        <li>
+                                            <a href="forget-pass.html">Historial</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a class="js-arrow" href="#">
+                                        <i class="fas fa-desktop"></i>Movimientos</a>
+                                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                        <li>
+                                            <a href="button.html">Consulta de Movimientos</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
+
+                <!--MENU-->
+                <aside class="menu-sidebar d-none d-lg-block">
+                    <div class="logo">
+                        <a href="#">
+                            <img src="" alt="Banco" />
+                        </a>
+                    </div>
+                    <div class="menu-sidebar__content js-scrollbar1">
+                        <nav class="navbar-sidebar">
+                            <ul class="list-unstyled navbar__list">
+                                <li class="active has-sub">
+                                    <li>
+                                        <a href="main.xhtml">
+                                            <i class="fas fa-chart-bar"></i>Posición Consolidada</a>
+                                    </li>
+                                    <li class="has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="fas fa-copy"></i>Préstamos</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            <li>
+                                                <a href="login.html">Detalle de Préstamos</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="fas fa-copy"></i>Transferencias</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            <li>
+                                                <a href="login.html">Activación</a>
+                                            </li>
+                                            <li>
+                                                <a href="register.html">Transferencia Directa</a>
+                                            </li>
+                                            <li>
+                                                <a href="forget-pass.html">Transferencia Otros</a>
+                                            </li>
+                                            <li>
+                                                <a href="forget-pass.html">Historial</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub">
+                                        <a class="js-arrow" href="#">
+                                            <i class="fas fa-desktop"></i>Movimientos</a>
+                                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                            <li>
+                                                <a href="button.html">Consulta de Movimientos</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </aside>  
+                <!--FIN MENU-->
+                <!-- HEADER DESKTOP-->
+                <div class="page-container">
+                    <header class="header-desktop">
+                        <div class="section__content section__content--p30">
+                            <div class="container-fluid">
+                                <div class="header-wrap">
+                                    <div class="header-button">
+                                        <div class="noti-wrap">
+                                            <div class="mess__item">                                                 
+                                            </div>
+                                        </div>
+                                        <div class="account-wrap">
+                                            <div class="account-item clearfix js-item-menu">
+                                                <div class="content">
+                                                    <a class="js-acc-btn" href="#">Usuario</a>
+                                                </div>
+                                                <div class="account-dropdown js-dropdown">
+                                                    <div class="info clearfix">
+
+                                                        <div class="content">
+                                                            <h5 class="name">
+                                                                <a href="#">Usuario Nombre</a>
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="account-dropdown__body">
+                                                        <div class="account-dropdown__item">
+                                                            <a href="#">
+                                                                <i class="zmdi zmdi-account"></i>Account</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="account-dropdown__footer">
+                                                        <a href="#">
+                                                            <i class="zmdi zmdi-power"></i>Logout</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    <!-- END HEADER DESKTOP-->   
+
+                    <ui:insert name="content">
+
+
+
+                    </ui:insert>
+
+
+
+
+
+
+                </div>
+            </div>
+            <!-- Jquery JS-->
+            <script src="vendor/jquery-3.2.1.min.js"></script>
+            <!-- Bootstrap JS-->
+            <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+            <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+            <!-- Vendor JS       -->
+            <script src="vendor/slick/slick.min.js">
+            </script>
+            <script src="vendor/wow/wow.min.js"></script>
+            <script src="vendor/animsition/animsition.min.js"></script>
+            <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+            </script>
+            <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+            <script src="vendor/counter-up/jquery.counterup.min.js">
+            </script>
+            <script src="vendor/circle-progress/circle-progress.min.js"></script>
+            <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+            <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+            <script src="vendor/select2/select2.min.js">
+            </script>
+            <!-- Main JS-->
+            <script src="js/main.js"></script>
+        </div>
+    </h:body>
+
+</html>
