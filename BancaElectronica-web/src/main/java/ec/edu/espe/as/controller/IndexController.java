@@ -1,9 +1,10 @@
 package ec.edu.espe.as.controller;
 
+import ec.edu.espe.as.controller.msg.LoginRQ;
+import java.io.OutputStream;
 import java.io.Serializable;
-import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -16,52 +17,45 @@ import javax.inject.Named;
 @ViewScoped
 public class IndexController implements Serializable {
 
-    /*@EJB
-    private AgenteFacadeLocal EJBAgente;
-    private Agente agente;
+    private String usuario;
+    private String clave;
+    private String ci;
 
-    @EJB
-    private CarteraFacadeLocal EJBCartera;
-    private List<Cartera> cartera = null;
-    private Cartera ca = new Cartera();
-    private int cuantos;
-    private float dinero=0;
-
-    @PostConstruct
     public void init() {
-        agente = new Agente();
-        ca = new Cartera();
-        contar();
-    }
 
-    public Agente getAgente() {
-        return agente;
-    }
-
-    public void setAgente(Agente agente) {
-        this.agente = agente;
     }
 
     public String iniciarSesion() {
-        String redireccion = "";
-
+         String redireccion = "";
         try {
-            Agente us;
-            System.out.println("Este agente va -> " + agente.getNombre());
-            us = EJBAgente.iniciarSesion(agente, agente.getNombre());
-            if (us != null) {
-                // redireccion = "/Vista/Inicio?faces-redirect=true";
-                redireccion = "/Vista/Inicio?faces-redirect=true";
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("agente", us);
-                //llenarClientes();  
-            } else {
+            LoginRQ lg=new LoginRQ();
+            URL url = new URL(
+                    "https://9461f83f.ngrok.io/Banca-web/api/usuario/");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setRequestMethod("PUT");
+            conn.setRequestProperty("Content-Type", "application/json");
+            String in = "{\"clave\":\"" + this.clave + "\",\"usuario\":\"" + this.usuario + "\"}";
+            OutputStream os = conn.getOutputStream();
+            os.write(in.getBytes());
+            os.flush();
+            System.out.println("input: " + in);
+            System.out.println("Mensaje de respuesta: " + conn.getResponseCode());
+           
+            if (conn.getResponseCode() == 204) {
+               /* throw new RuntimeException("Failed : HTTP error code : "
+                        + conn.getResponseCode());*/
+              redireccion = "/main?faces-redirect=true";
+              lg.setClave(this.usuario);
+              FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", lg);                             
+            } else{
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Credenciales Incorrectas"));
                 System.out.println("Fallamos prro :( ");
             }
-
         } catch (Exception e) {
-            System.out.println("Error: " + agente.getClave());
+            System.out.println("Ex:"+e);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "ERROR!"));
+            
         }
         return redireccion;
     }
@@ -70,45 +64,28 @@ public class IndexController implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
     }
 
-    public String getActual() {
-        Agente as = (Agente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("agente");
-        System.out.println("Bienvenido Agente>> : " + as.getNombre());
-        return as.getNombre();
-    }
-    
-    public void contar(){
-        Agente ar = (Agente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("agente");       
-        cuantos=EJBCartera.CarteraFiltro(ar).size();
-        
-        for(Cartera p : EJBCartera.CarteraFiltro(ar)){
-            this.dinero = this.dinero+ Float.parseFloat(p.getCodigopermora().getMontototal()+"");
-         }
-        System.out.println("Se t agregaran "+cuantos+"Un total de  : "+dinero+"$");
+    public String getUsuario() {
+        return usuario;
     }
 
-    public Cartera getCa() {
-        return ca;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public void setCa(Cartera ca) {
-        this.ca = ca;
+    public String getClave() {
+        return clave;
     }
 
-    public int getCuantos() {
-        return cuantos;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
-    public void setCuantos(int cuantos) {
-        this.cuantos = cuantos;
+    public String getCi() {
+        return ci;
     }
 
-    public float getDinero() {
-        return dinero;
+    public void setCi(String ci) {
+        this.ci = ci;
     }
 
-    public void setDinero(float dinero) {
-        this.dinero = dinero;
-    }
-
-*/
 }

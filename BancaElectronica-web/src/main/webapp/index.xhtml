@@ -25,14 +25,14 @@
                                             <br/><br/>
                                             <div class="form-group">
                                                 <p:outputLabel for ="txtUsuario" value ="Usuario"/>
-                                                <p:inputText class="au-input au-input--full" id="txtUsuario" value=" " required="true"/>
+                                                <p:inputText class="au-input au-input--full" id="txtUsuario" value="#{indexController.usuario}" required="true"/>
                                             </div>
                                             <div class="form-group">
                                                 <p:outputLabel for ="txtClave" value ="Clave"/>
-                                                <p:password class="au-input au-input--full" id="txtClave" value="123" />
+                                                <p:password class="au-input au-input--full" id="txtClave" value="#{indexController.clave}" />
                                             </div>
                                             <p:column/>
-                                            <p:commandButton class="au-btn au-btn--block au-btn--green m-b-20" icon="ui-icon-key" value="Iniciar Sesion" action=" " />
+                                            <p:commandButton class="au-btn au-btn--block au-btn--green m-b-20" icon="ui-icon-key" value="#{indexController.iniciarSesion}" action=" " />
                                         </h:form>
                                     </div>
                                 </div>
