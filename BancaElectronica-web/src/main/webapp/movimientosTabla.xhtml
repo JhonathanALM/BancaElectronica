@@ -16,36 +16,40 @@
                             <div class="row">
                                 <div class="col-lg-9">
 
-                                    <h1>Posición Consolidada</h1>
-
-                                    <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">
-                                        <p:outputLabel value="Cuentas"></p:outputLabel>
-                                        <p:selectBooleanCheckbox value="" label="Cuentas"/>
-                                        <p:outputLabel value="Préstamos"></p:outputLabel><p:selectBooleanCheckbox value="" label="Préstamos"/>
-                                    </h:panelGrid>
-
-
-                                    <p:dataTable var="cuenta" value="">
-                                        <p:column headerText="Banco">
+                                    <h1>Historial de Movimientos</h1>
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Cuenta:</label>
+                                    </div>
+                                    
+                                    <p:dataTable var="mov" value="">
+                                        <p:column headerText="Fecha">
                                             <h:outputText value="" />
                                         </p:column>
-                                        <p:column headerText="Cuenta">
+                                        <p:column headerText="Concepto">
                                             <h:outputText value="" />
                                         </p:column>
                                         <p:column headerText="Tipo">
                                             <h:outputText value="" />
                                         </p:column>
-                                        <p:column headerText="Estado">
+                                        <p:column headerText="Documento">
                                             <h:outputText value="" />
                                         </p:column>
-                                        <p:column headerText="Saldo Contable">
+                                        <p:column headerText="Oficina/Sucursal">
                                             <h:outputText value="" />
                                         </p:column>
-                                        <p:column headerText="Saldo Disponible">
+                                        <p:column headerText="Monto">
                                             <h:outputText value="" />
                                         </p:column>
+                                        <p:column headerText="Saldo">
+                                            <h:outputText value="" />
+                                        </p:column>
+
                                     </p:dataTable>
-                              <p:commandButton class="au-btn au-btn--block au-btn--green m-b-20" value="ACTUALIZAR" action="#{indexController.iniciarSesion()}" />
+
+                                    <p:commandButton class="au-btn au-btn--block au-btn--green m-b-20"  value=" ACTUALIZAR" action="#{indexController.iniciarSesion()}" />
+
+
+
                                 </div>
                             </div>
                         </div>

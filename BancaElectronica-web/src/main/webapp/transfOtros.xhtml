@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./templateDashboard.xhtml">
+
+            <ui:define name="content">
+                <div class="main-content">
+                    <div class="section__content section__content--p30">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h1>Activar cuentas para Transferencias</h1> 
+
+                                    <div class="card">
+                                       <div class="card-body card-block">
+                                            <h:form>
+                                                <!--<div class="card-header">
+                                                    <strong>Origen</strong>
+                                                </div>-->
+                                                
+                                                <div class="row form-group">
+                                                    <div class="col col-md-3">
+                                                        <label for="text-input" class=" form-control-label">Monto:</label>
+                                                    </div>
+                                                    <div class="col-12 col-md-9">
+                                                        <h:inputText value="" id="text-input" class="form-control"></h:inputText>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row form-group">
+                                                    <div class="col col-md-3">
+                                                        <label for="op11" class=" form-control-label">Cuenta:</label>
+                                                    </div>
+                                                    <div class="col-12 col-md-9">
+                                                        <select name="op11" id="SelectSm" class="form-control-op11 form-control">
+                                                            <option value="0">Seleccionar</option>
+                                                            <option value="1">...</option>
+                                                            <option value="2">....</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                               <!-- <div class="card-header">
+                                                    <strong>Destino</strong>
+                                                </div>-->
+                                                
+                                                <div class="row form-group">
+                                                    <div class="col col-md-3">
+                                                        <label for="op12" class=" form-control-label">Banco:</label>
+                                                    </div>
+                                                    <div class="col-12 col-md-9">
+                                                        <select name="op12" id="SelectSm" class="form-control-op12 form-control">
+                                                            <option value="0">Seleccionar</option>
+                                                            <option value="1">...</option>
+                                                            <option value="2">....</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row form-group">
+                                                    <div class="col col-md-3">
+                                                        <label class=" form-control-label">Tipo de Cuenta</label>
+                                                    </div>
+                                                    <div class="col col-md-9">
+                                                        <div class="form-check">
+                                                            <div class="radio">
+                                                                <label for="radio1" class="form-check-label ">
+                                                                    <input type="radio" id="radio1" name="radios" value="option1" class="form-check-input">Ahorro</input>
+                                                                </label>
+                                                            </div>
+                                                            <div class="radio">
+                                                                <label for="radio2" class="form-check-label ">
+                                                                    <input type="radio" id="radio2" name="radios" value="option2" class="form-check-input">Corriente</input>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col col-md-3">
+                                                        <label for="text-input" class=" form-control-label">Número de Cuenta del Beneficiario</label>
+                                                    </div>
+                                                    <div class="col-12 col-md-9">
+                                                        <h:inputText value="" id="text-input" class="form-control"></h:inputText>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row form-group">
+                                                    <div class="col col-md-3">
+                                                        <label for="op13" class=" form-control-label">Tipo de identificación:</label>
+                                                    </div>
+                                                    <div class="col-12 col-md-9">
+                                                        <select name="op13" id="SelectSm" class="form-control-op13 form-controll">
+                                                            <option value="0">Seleccionar</option>
+                                                            <option value="1">...</option>
+                                                            <option value="2">....</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row form-group">
+                                                    <div class="col col-md-3">
+                                                        <label for="text-input" class=" form-control-label">Identificación</label>
+                                                    </div>
+                                                    <div class="col-12 col-md-9">
+                                                        <h:inputText value="" id="text-input" class="form-control"></h:inputText>
+                                                    </div>
+                                                </div>
+
+                                               <!-- <div class="card-header">
+                                                    <strong>Concepto</strong>
+                                                </div>-->
+                                                <div class="row form-group">
+                                                    <div class="col col-md-3">
+                                                        <label for="text-input" class=" form-control-label">Por concepto de: </label>
+                                                    </div>
+                                                    <div class="col-12 col-md-9">
+                                                        <h:inputText value="" id="text-input" class="form-control"></h:inputText>
+                                                    </div>
+                                                </div>
+
+                                                <!--<div class="card-footer">
+                                                    <h:commandButton class="btn btn-primary btn-sm" value="ACEPTAR"></h:commandButton>
+                                                </div>-->
+                                            </h:form> 
+                                        </div>
+                                        <div class="card-footer">
+                                            <h:commandButton class="btn btn-primary btn-sm" value="ACEPTAR"></h:commandButton>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>
