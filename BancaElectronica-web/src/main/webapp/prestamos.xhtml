@@ -14,41 +14,36 @@
                     <div class="section__content section__content--p30">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-lg-9">
-
+                                <div class="col-lg-50">
                                     <h1>Detalle de Préstamos</h1>
-
-                                    <p:dataTable var="dpres" value="">
-                                        <p:column headerText="Banco">
-                                            <h:outputText value="" />
-                                        </p:column>
-                                        <p:column headerText="Préstamo">
-                                            <h:outputText value="" />
-                                        </p:column>
-                                        <p:column headerText="Tipo">
-                                            <h:outputText value="" />
-                                        </p:column>
-                                        <p:column headerText="Fecha de Pago">
-                                            <h:outputText value="" />
-                                        </p:column>
-                                        <p:column headerText="Días Mora">
-                                            <h:outputText value="" />
-                                        </p:column>
-                                        <p:column headerText="Moneda">
-                                            <h:outputText value="" />
-                                        </p:column>
-                                        <p:column headerText="Monto Próximo Pago">
-                                            <h:outputText value="" />
-                                        </p:column>
-                                        <p:column headerText="Saldo Deuda">
-                                            <h:outputText value="" />
-                                        </p:column>
-                                    </p:dataTable>
-
+                                    <div class="table-responsive table--no-card m-b-380">
+                                        <p:dataTable class="table table-borderless table-striped table-earning" var="dpres" value="">
+                                            <p:column headerText="Banco">
+                                                <h:outputText value="" />
+                                            </p:column>
+                                            <p:column headerText="Préstamo">
+                                                <h:outputText value="" />
+                                            </p:column>
+                                            <p:column headerText="Tipo">
+                                                <h:outputText value="" />
+                                            </p:column>
+                                            <p:column headerText="Fecha de Pago">
+                                                <h:outputText value="" />
+                                            </p:column>
+                                            <p:column headerText="Días Mora">
+                                                <h:outputText value="" />
+                                            </p:column>
+                                            <p:column headerText="Moneda">
+                                                <h:outputText value="" />
+                                            </p:column>
+                                            <p:column headerText="Monto Próximo Pago">
+                                                <h:outputText value="" />
+                                            </p:column>
+                                            <p:column headerText="Saldo Deuda">
+                                                <h:outputText value="" />
+                                            </p:column>
+                                        </p:dataTable>                                    </div>
                                     <p:commandButton class="au-btn au-btn--block au-btn--green m-b-20"  value=" ACTUALIZAR" action="#{indexController.iniciarSesion()}" />
-
-
-
                                 </div>
                             </div>
                         </div>
