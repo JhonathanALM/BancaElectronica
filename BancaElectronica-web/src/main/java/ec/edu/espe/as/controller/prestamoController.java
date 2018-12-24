@@ -14,6 +14,7 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.WebResource;
 import ec.edu.espe.as.controller.msg.UsuarioRQ;
+import java.util.ArrayList;
 import javax.faces.context.FacesContext;
 import javax.ws.rs.core.MediaType;
 
@@ -28,17 +29,17 @@ public class prestamoController implements Serializable {
      private List<PrestamoRQ> items = null;
     public prestamoController() {
     }
-
     public List<PrestamoRQ> obtenerPrestamos(String cedula) {
         Client client = Client.create();
-        WebResource resource = client.resource("http://localhost:8080/ServicioPrestamo/api/prestamo/");
-
-        List<PrestamoRQ> prestamos = resource.path("")
+        List<PrestamoRQ> r = new ArrayList<>();
+        WebResource resource = client.resource("http://192.168.0.195:9090/Prestamo-web/api/verPrestamo/");
+        System.out.println("http://192.168.0.195:9090/Prestamo-web/api/verPrestamo/1");
+        PrestamoRQ us = resource.path("1")
                 .accept(MediaType.APPLICATION_JSON)
-                .get(new GenericType<List<PrestamoRQ>>() {
-                });
-        System.out.println(prestamos.size());
-        return prestamos;
+                .get(PrestamoRQ.class);
+        r.add(us);
+        System.out.println(us.getSaldo());
+        return r;
     }
 
     public List<PrestamoRQ> getItems() {
@@ -53,9 +54,5 @@ public class prestamoController implements Serializable {
     public void setItems(List<PrestamoRQ> items) {
         this.items = items;
     }
-    
-    
-    
-    
-
+               
 }

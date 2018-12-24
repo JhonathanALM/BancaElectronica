@@ -7,7 +7,7 @@ public class CuentasRQ {
 
     private String cuenta;
     private String tipo;
-    private boolean estado;
+    private String estado;
     private double saldo;
 
     public String getCuenta() {
@@ -26,13 +26,6 @@ public class CuentasRQ {
         this.tipo = tipo;
     }
 
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
 
     public double getSaldo() {
         return saldo;
@@ -40,6 +33,14 @@ public class CuentasRQ {
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
     

@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package ec.edu.espe.as.controller;
-
-import ec.edu.espe.as.controller.msg.PrestamoRQ;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -26,14 +24,17 @@ import javax.ws.rs.core.MediaType;
 @SessionScoped
 public class cuentaController implements Serializable {
 
-     private List<CuentasRQ> items = null;
+    private List<CuentasRQ> items = null;
+    private CuentasRQ selected= new CuentasRQ();
     public cuentaController() {
     }
 
     public List<CuentasRQ> obtenerPrestamos(String cedula) {
         Client client = Client.create();
-        WebResource resource = client.resource("http://10.40.226.246:9090/Modulo-Cuentas-Pll-web/webresources/cuenta/");
-
+        System.out.println("jajaja http://192.168.0.196:9090/Modulo-Cuentas-Pll-web/api/cuenta/");
+        WebResource resource = client.resource("http://192.168.0.196:9090/Modulo-Cuentas-Pll-web/api/cuenta/");
+        //System.out.println("http://192.168.0.196:9090/Modulo-Cuentas-Pll-web/webresources/cuenta/");
+        //WebResource resource = client.resource("http://192.168.0.196:9090/Modulo-Cuentas-Pll-web/webresources/cuenta/");
         List<CuentasRQ> cuentas = resource.path("1004456891")
                 .accept(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<CuentasRQ>>() {
@@ -53,6 +54,14 @@ public class cuentaController implements Serializable {
 
     public void setItems(List<CuentasRQ> items) {
         this.items = items;
+    }
+
+    public CuentasRQ getSelected() {
+        return selected;
+    }
+
+    public void setSelected(CuentasRQ selected) {
+        this.selected = selected;
     }
     
     

@@ -1,13 +1,11 @@
 package ec.edu.espe.as.controller.msg;
 
-import java.util.Date;
-
 /**
  * @author jhona
  */
 public class PrestamoRQ {
     private String estado;
-    private Date fecha;
+    private String fecha;
     private int id;
     private double monto;
     private double numero;
@@ -22,13 +20,6 @@ public class PrestamoRQ {
         this.estado = estado;
     }
 
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
 
     public int getId() {
         return id;
@@ -70,8 +61,11 @@ public class PrestamoRQ {
         this.tipo = tipo;
     }
 
-   
-    
-    
+    public String getFecha() {
+        return fecha;
+    }
 
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
 }

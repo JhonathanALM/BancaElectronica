@@ -28,22 +28,25 @@
                                                         <label for="text-input" class=" form-control-label">Monto:</label>
                                                     </div>
                                                     <div class="col-12 col-md-9">
-                                                        <h:inputText value="" id="text-input" class="form-control"></h:inputText>
+                                                        <h:inputText value="#{transaccionExtController.transaccionExt.monto}" id="text-input" class="form-control"></h:inputText>
                                                     </div>
                                                 </div>
 
                                                 <div class="row form-group">
                                                     <div class="col col-md-3">
-                                                        <label for="op11" class=" form-control-label">Cuenta:</label>
+                                                        <label for="op1" class=" form-control-label">De la cuenta:</label>
                                                     </div>
-                                                    <div class="col-12 col-md-9">
-                                                        <select name="op11" id="op11" class="form-control-op11 form-control">
-                                                            <option value="0">Seleccionar</option>
-                                                            <option value="1">...</option>
-                                                            <option value="2">....</option>
-                                                        </select>
+                                                    <div class="col col-md-8">
+                                                        <p:selectOneMenu id="ext" value="#{transaccionExtController.transaccionExt.cuentaOrigen}" required="true" style="width: 100%" >
+                                                            <f:selectItem itemLabel="Seleccione.."/>
+                                                            <f:selectItems value="#{cuentaController.items}"
+                                                                           var="personaItem"
+                                                                           itemValue="#{personaItem}"
+                                                                           itemLabel="#{personaItem.cuenta}"/>                                                    
+                                                        </p:selectOneMenu>
                                                     </div>
                                                 </div>
+
 
                                                 <!-- <div class="card-header">
                                                      <strong>Destino</strong>
@@ -51,14 +54,16 @@
 
                                                 <div class="row form-group">
                                                     <div class="col col-md-3">
-                                                        <label for="op12" class=" form-control-label">Banco:</label>
+                                                        <label for="op1" class=" form-control-label">Banco:</label>
                                                     </div>
-                                                    <div class="col-12 col-md-9">
-                                                        <select name="op12" id="op12" class="form-control-op12 form-control">
-                                                            <option value="0">Seleccionar</option>
-                                                            <option value="1">...</option>
-                                                            <option value="2">....</option>
-                                                        </select>
+                                                    <div class="col col-md-8">
+                                                        <p:selectOneMenu id="cuenta" value="#{transaccionExtController.transaccionExt.banco}" required="true" style="width: 100%" >
+                                                            <f:selectItem itemLabel="SELECCIONE UNO.." itemValue=""/>
+                                                            <f:selectItem itemLabel="PRODUBANCO" itemValue="PRODUBANCO"/>
+                                                            <f:selectItem itemLabel="PACÍFICO" itemValue="PACIFICO"/>
+                                                            <f:selectItem itemLabel="MUTUALISTA" itemValue="MUTUALISTA"/>
+                                                            <f:selectItem itemLabel="INTERNACIONAL" itemValue="INTERNACIONAL"/>
+                                                        </p:selectOneMenu>
                                                     </div>
                                                 </div>
 
@@ -68,48 +73,43 @@
                                                     </div>
                                                     <div class="col col-md-9">
                                                         <div class="form-check">
-                                                            <div class="radio">
-                                                                <label for="radio1" class="form-check-label ">
-                                                                    <input type="radio" id="radio1" name="radios" value="option1" class="form-check-input">Ahorro</input>
-                                                                </label>
-                                                            </div>
-                                                            <div class="radio">
-                                                                <label for="radio2" class="form-check-label ">
-                                                                    <input type="radio" id="radio2" name="radios" value="option2" class="form-check-input">Corriente</input>
-                                                                </label>
-                                                            </div>
+
+                                                            <p:selectOneRadio value="#{transaccionExtController.transaccionExt.tipoCuenta}">
+                                                                <f:selectItem itemLabel="AHORROS  " itemValue="Ahorros" />
+                                                                <f:selectItem itemLabel="CORRIENTE" itemValue="Corriente" />
+                                                            </p:selectOneRadio>
+
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3">
-                                                        <label for="text-input1" class=" form-control-label">Número de Cuenta del Beneficiario</label>
+                                                        <label  class=" form-control-label">Número de Cuenta del Beneficiario</label>
                                                     </div>
                                                     <div class="col-12 col-md-9">
-                                                        <h:inputText value="" id="text-input1" class="form-control"></h:inputText>
+                                                        <h:inputText value="#{transaccionExtController.transaccionExt.cuentaDestino}" class="form-control"></h:inputText>
                                                     </div>
                                                 </div>
 
 
                                                 <div class="row form-group">
                                                     <div class="col col-md-3">
-                                                        <label for="op13" class=" form-control-label">Tipo de identificación:</label>
+                                                        <label  class=" form-control-label">Tipo de identificación:</label>
                                                     </div>
                                                     <div class="col-12 col-md-9">
-                                                        <select name="op13" id="op13" class="form-control-op13 form-control">
-                                                            <option value="0">Seleccionar</option>
-                                                            <option value="1">...</option>
-                                                            <option value="2">....</option>
-                                                        </select>
+                                                        <p:selectOneMenu  value="#{transaccionExtController.transaccionExt.tipoIdentificacion}" style="width: 100%" >
+                                                            <f:selectItem itemLabel="CÉDULA" itemValue="CEDULA"/>
+                                                            <f:selectItem itemLabel="PASAPORTE" itemValue="PASAPORTE" />
+                                                        </p:selectOneMenu>
                                                     </div>
                                                 </div>
 
                                                 <div class="row form-group">
                                                     <div class="col col-md-3">
-                                                        <label for="text-input2" class=" form-control-label">Identificación</label>
+                                                        <label class=" form-control-label">Identificación</label>
                                                     </div>
                                                     <div class="col-12 col-md-9">
-                                                        <h:inputText value="" id="text-input2" class="form-control"></h:inputText>
+                                                        <h:inputText value="#{transaccionExtController.transaccionExt.identificacion}"  class="form-control"></h:inputText>
                                                     </div>
                                                 </div>
 
@@ -118,15 +118,15 @@
                                                  </div>-->
                                                 <div class="row form-group">
                                                     <div class="col col-md-3">
-                                                        <label for="text-input3" class=" form-control-label">Por concepto de: </label>
+                                                        <label  class=" form-control-label">Por concepto de: </label>
                                                     </div>
                                                     <div class="col-12 col-md-9">
-                                                        <h:inputText value="" id="text-input3" class="form-control"></h:inputText>
+                                                        <h:inputText value="#{transaccionExtController.transaccionExt.concepto}" class="form-control"></h:inputText>
                                                     </div>
                                                 </div>
 
                                                 <div class="card-footer">
-                                                    <h:commandButton class="btn btn-primary btn-sm" value="ACEPTAR"></h:commandButton>
+                                                    <h:commandButton class="btn btn-primary btn-sm" value="ACEPTAR" action="#{transaccionExtController.enviar()}"></h:commandButton>
                                                 </div>
                                             </h:form> 
                                         </div>

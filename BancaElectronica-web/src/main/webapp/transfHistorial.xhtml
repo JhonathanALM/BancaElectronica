@@ -2,10 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
-
         <ui:composition template="./templateDashboard.xhtml">
 
             <ui:define name="content">
@@ -15,25 +16,56 @@
                             <div class="row">
                                 <div class="col-lg-9">
 
-                                    <h1>Historial de Transferencias</h1>
+                                    <h2>Historial de MOVIMIENTOS</h2>
+                                    <br/><br/>
+                                    <h:form>
+                                    <h:panelGrid columns="2" cellpadding="12">                        
+                                        <p:outputLabel  value="Desde:(DD/MM/AA)" />
+                                        <p:calendar value="#{hTransaccionController.desde}" showOn="button" />
 
-                                    <div class="card">
-
-                                        <div class="card-body card-block">
-
-                                            <h:form>
-
-
-                                            </h:form> 
-                                        </div>
-                                        <div class="card-footer">
-                                            <h:commandButton class="btn btn-primary btn-sm" value="ACEPTAR"></h:commandButton>
+                                        <p:outputLabel  value="Hasta:(DD/MM/AA)" />
+                                        <p:calendar value="#{hTransaccionController.hasta}" showOn="button" />
+                                    </h:panelGrid>     
+                                    <br/>
+                                    <div class="row form-group">
+                                          De la cuenta:
+                                        <div class="col col-md-8">
+                                            <p:selectOneMenu id="ext" value="#{hTransaccionController.pa}" required="true" style="width: 100%" >
+                                                <f:selectItem itemLabel="Seleccione.."/>
+                                                <f:selectItems value="#{cuentaController.items}"
+                                                               var="personaItem"
+                                                               itemValue="#{personaItem}"
+                                                               itemLabel="#{personaItem.cuenta}"/>                                                    
+                                            </p:selectOneMenu>
                                         </div>
                                     </div>
+                                    <p:commandButton value="Consultar" action="#{hTransaccionController.llenar()}" icon="pi pi-check" />
+                                    </h:form>
+                                    <hr style="width:75%;"></hr>
 
+                                    <p:dataTable var="item" value="#{hTransaccionController.items}">
+                                        <p:column headerText="FECHA">
+                                            <h:outputText value="#{item.fecha}" />
+                                        </p:column>
+                                        <p:column headerText="DOCUMENTO">
+                                            <h:outputText value="#{item.documento}" />
+                                        </p:column>
+                                         <p:column headerText="TIPO">
+                                            <h:outputText value="#{item.tipo}" />
+                                        </p:column>
+                                        <p:column headerText="VALOR">
+                                            <h:outputText value="#{item.valor}" />
+                                        </p:column>
+                                        <p:column headerText="SALDO">
+                                            <h:outputText value="#{item.saldo}" />
+                                        </p:column>
+                                       
+                                    </p:dataTable>
 
 
                                 </div>
+
+
                             </div>
                         </div>
                     </div>

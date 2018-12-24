@@ -17,19 +17,16 @@
                             <div class="row">
                                 <div class="col-lg-9">
 
-                                    <h1>Posición Consolidada</h1>   
+                                    <h1>Posición Consolidada</h1> 
+                                    <br/>
                                     <h2><h:outputLabel for="name" value="#{indexController.actual}" /></h2>
-                                    
-                                    
-                                    <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">
-                                        <p:outputLabel value="Cuentas"></p:outputLabel>
-                                        <p:selectBooleanCheckbox value="NAN" label="Cuentas"/>
-                                        <p:outputLabel value="Préstamos"></p:outputLabel><p:selectBooleanCheckbox value="NAN" label="Préstamos"/>
-                                    </h:panelGrid>
 
 
                                     <p:dataTable var="item" value="#{cuentaController.items}">
-                                        <p:column headerText="Banco">
+                                        <f:facet name="header">
+                                            LISTA DE CUENTAS
+                                        </f:facet>
+                                        <p:column headerText="BANCO">
                                             <h:outputText value="BANQUITO" />
                                         </p:column>
                                         <p:column headerText="CUENTA">
@@ -38,28 +35,36 @@
                                         <p:column headerText="TIPO">
                                             <h:outputText value="#{item.tipo}" />
                                         </p:column>
-                                        <p:column headerText="Estado">
+                                        <p:column headerText="ESTADO">
                                             <h:outputText value="#{item.estado}" />
                                         </p:column>
-                                        <p:column headerText="Saldo Disponible">
+                                        <p:column headerText="SALDO DISPONIBLE">
                                             <h:outputText value="#{item.saldo}" />
                                         </p:column>
                                     </p:dataTable>
-                                    
+                                    <br/>
+                                    <br/>
+
                                     <p:dataTable var="item" value="#{prestamoController.items}">
-                                        <p:column headerText="Estado">
-                                            <h:outputText value="Banquito" />
+                                        <f:facet name="header">
+                                            LISTA DE PRESTAMOS
+                                        </f:facet>
+                                        <p:column headerText="ESTADO">
+                                            <h:outputText value="BANQUITO" />
                                         </p:column>
-                                        <p:column headerText="Numero">
+                                        <p:column headerText="NUMERO">
                                             <h:outputText value="#{item.numero}" />
                                         </p:column>
-                                        <p:column headerText="Tipo">
-                                            <h:outputText value="#{item.fecha}" />
+                                        <p:column headerText="TIPO">
+                                            <h:outputText value="#{item.tipo}" />
                                         </p:column>
-                                        <p:column headerText="Monto próximo de pago">
+                                        <p:column headerText="MONTO PROXIMO DE PAGO">
                                             <h:outputText value="#{item.monto}" />
                                         </p:column>
-                                        <p:column headerText="Saldo">
+                                        <p:column headerText="FECHA GENERACION PRESTAMO">
+                                            <h:outputText value="#{item.fecha}" />
+                                        </p:column>
+                                        <p:column headerText="SALDO">
                                             <h:outputText value="#{item.saldo}" />
                                         </p:column>
                                     </p:dataTable>                                 
