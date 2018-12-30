@@ -4,16 +4,18 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import ec.edu.espe.as.controller.msg.LoginRQ;
 import ec.edu.espe.as.controller.msg.UsuarioRQ;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.ws.rs.core.MediaType;
 
@@ -21,12 +23,15 @@ import javax.ws.rs.core.MediaType;
  * @author jhona
  */
 @Named
-@ViewScoped
+@SessionScoped
 public class IndexController implements Serializable {
+    
 
     private LoginRQ loginRQ;
     private UsuarioRQ usuarioRQ;
-
+    private final String urlSeg="http://40.121.87.240:8086/Banca-web/api/usuario";
+    private final String urlKyc="http://40.121.87.240:8086/ServicioPersona/api/persona/";
+    private String c;
     @PostConstruct
     public void init() {
         loginRQ = new LoginRQ();
@@ -36,11 +41,10 @@ public class IndexController implements Serializable {
         String redireccion = "";
         try {
             UsuarioRQ lg = new UsuarioRQ();
-            URL url = new URL(
-                    "http://localhost:8080/Banca-web/api/usuario/");
+            URL url = new URL(urlSeg);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
-            conn.setRequestMethod("PUT");
+            conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
             String in = "{\"clave\":\"" + this.loginRQ.getClave() + "\",\"usuario\":\"" + this.loginRQ.getUsuario() + "\"}";
             OutputStream os = conn.getOutputStream();
@@ -48,10 +52,20 @@ public class IndexController implements Serializable {
             os.flush();
             System.out.println("input: " + in);
             System.out.println("Mensaje de respuesta: " + conn.getResponseCode());
-
-            if (conn.getResponseCode() == 204) {
+            BufferedReader inp = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line = null;
+            StringBuilder crunchifyBuilder = new StringBuilder();
+                while ((line = inp.readLine()) != null) {
+                    crunchifyBuilder.append(line);                    
+                }
+              
+             System.out.println("Data Received: " + crunchifyBuilder.toString()); 
+             System.out.println("substring is = " + crunchifyBuilder.substring(22, 32));
+            if (conn.getResponseCode() == 200) {
+                c= crunchifyBuilder.substring(22, 32);
                 redireccion = "/main?faces-redirect=true";
                 lg=this.obtenerUsuario();
+                 Client client = Client.create();        
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", lg);
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Credenciales Incorrectas"));
@@ -72,15 +86,17 @@ public class IndexController implements Serializable {
 
     public UsuarioRQ obtenerUsuario() throws MalformedURLException, IOException {
         Client client = Client.create();
-        WebResource resource = client.resource("http://localhost:8080/ServicioPersona/api/persona/");
+        WebResource resource = client.resource(urlKyc);
         // Get response as String
-        UsuarioRQ us = resource.path("1004456891")
+        UsuarioRQ us = resource.path(c)
                 .accept(MediaType.APPLICATION_JSON)
                 .get(UsuarioRQ.class);
         System.out.println("nombre:"+us.getNombres());
         System.out.println("apellido:"+us.getApellidos());
         return us;
     }
+    
+    
 
     public LoginRQ getLoginRQ() {
         return loginRQ;

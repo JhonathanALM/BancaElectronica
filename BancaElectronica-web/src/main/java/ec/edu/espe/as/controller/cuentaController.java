@@ -26,16 +26,14 @@ public class cuentaController implements Serializable {
 
     private List<CuentasRQ> items = null;
     private CuentasRQ selected= new CuentasRQ();
+    private final String urlCuentas="http://40.121.87.240:8086/ServicioCuenta/api/cuenta/";
     public cuentaController() {
     }
 
-    public List<CuentasRQ> obtenerPrestamos(String cedula) {
-        Client client = Client.create();
-        System.out.println("jajaja http://192.168.0.196:9090/Modulo-Cuentas-Pll-web/api/cuenta/");
-        WebResource resource = client.resource("http://192.168.0.196:9090/Modulo-Cuentas-Pll-web/api/cuenta/");
-        //System.out.println("http://192.168.0.196:9090/Modulo-Cuentas-Pll-web/webresources/cuenta/");
-        //WebResource resource = client.resource("http://192.168.0.196:9090/Modulo-Cuentas-Pll-web/webresources/cuenta/");
-        List<CuentasRQ> cuentas = resource.path("1004456891")
+    public List<CuentasRQ> obtenerCuentas(String cedula) {
+        Client client = Client.create();        
+        WebResource resource = client.resource(urlCuentas);
+        List<CuentasRQ> cuentas = resource.path("")
                 .accept(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<CuentasRQ>>() {
                 });
@@ -47,7 +45,7 @@ public class cuentaController implements Serializable {
         UsuarioRQ ar = (UsuarioRQ) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");        
         System.out.println("Estoy llenando las cuentas para" + ar.getCi());
           if (items == null) {
-            items = obtenerPrestamos(ar.getCi());
+            items = obtenerCuentas(ar.getCi());
         }
         return items;
     }

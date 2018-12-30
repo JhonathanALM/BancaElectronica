@@ -7,6 +7,7 @@ public class LoginRQ {
 
     private String clave;
     private String usuario;
+    private String ci;
 
     public String getClave() {
         return clave;
@@ -22,6 +23,14 @@ public class LoginRQ {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+
+    public String getCi() {
+        return ci;
+    }
+
+    public void setCi(String ci) {
+        this.ci = ci;
     }
     
 }

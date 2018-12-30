@@ -41,88 +41,30 @@
 
 
         <div id="top" class="top">
-            <ui:insert name="top">Top</ui:insert>
-        </div>
-        <div>            
+            <div>            
 
-            <div class="page-wrapper">
-                <!-- HEADER MOBILE-->
-                <header class="header-mobile d-block d-lg-none">
-                    <div class="header-mobile__bar">
-                        <div class="container-fluid">
-                            <div class="header-mobile-inner">
-                                <a class="logo" href="index.html">
-                                    BANCO
-                                </a>
-                                <button class="hamburger hamburger--slider" type="button">
-                                    <span class="hamburger-box">
-                                        <span class="hamburger-inner"></span>
-                                    </span>
-                                </button>
+                <div class="page-wrapper">
+                    <!-- HEADER MOBILE-->
+                    <header class="header-mobile d-block d-lg-none">
+                        <div class="header-mobile__bar">
+                            <div class="container-fluid">
+                                <div class="header-mobile-inner">
+                                    <a class="logo" href="index.html">
+                                        <img src="images/icon/logo.png" alt="CoolAdmin" />
+                                    </a>
+                                    <button class="hamburger hamburger--slider" type="button">
+                                        <span class="hamburger-box">
+                                            <span class="hamburger-inner"></span>
+                                        </span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <nav class="navbar-mobile">
-                        <div class="container-fluid">
-                            <ul class="navbar-mobile__list list-unstyled">
-                                <li>
-                                    <a href="PosicionC.xhtml">
-                                        <i class="fas fa-chart-bar"></i>Posición Consolidada</a>
-                                </li>
-                                <li class="has-sub">
-                                    <a class="js-arrow" href="#">
-                                        <i class="fas fa-copy"></i>Préstamos</a>
-                                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                        <li>
-                                            <a href="Prestamos.xhtml">Detalle de Préstamos</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="has-sub">
-                                    <a class="js-arrow" href="#">
-                                        <i class="fas fa-copy"></i>Transferencias</a>
-                                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                        <!--li>
-                                            <a href="activacion.xhtml">Activación</a>
-                                        </li-->
-                                        <li>
-                                            <a href="transfDirecta.xhtml">Transferencia Directa</a>
-                                        </li>
-                                        <li>
-                                            <a href="transfOtros.xhtml">Transferencia Otros</a>
-                                        </li>
-                                        <li>
-                                            <a href="transfHistorial.xhtml">Historial</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="has-sub">
-                                    <a class="js-arrow" href="#">
-                                        <i class="fas fa-desktop"></i>Movimientos</a>
-                                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                        <li>
-                                            <a href="button.html">Consulta de Movimientos</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </header>
-
-                <!--MENU-->
-                <aside class="menu-sidebar d-none d-lg-block">
-                    <div class="logo">
-                        <a href="#">
-                            <img src="" alt="Banco" />
-                        </a>
-                    </div>
-                    <div class="menu-sidebar__content js-scrollbar1">
-                        <nav class="navbar-sidebar">
-                            <ul class="list-unstyled navbar__list">
-                                <li class="active has-sub">
+                        <nav class="navbar-mobile">
+                            <div class="container-fluid">
+                                <ul class="navbar-mobile__list list-unstyled">
                                     <li>
-                                        <a href="main.xhtml">
+                                        <a href="PosicionC.xhtml">
                                             <i class="fas fa-chart-bar"></i>Posición Consolidada</a>
                                     </li>
                                     <li class="has-sub">
@@ -130,7 +72,7 @@
                                             <i class="fas fa-copy"></i>Préstamos</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                                             <li>
-                                                <a href="prestamos.xhtml">Detalle de Préstamos</a>
+                                                <a href="Prestamos.xhtml">Detalle de Préstamos</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -157,47 +99,118 @@
                                             <i class="fas fa-desktop"></i>Movimientos</a>
                                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                                             <li>
-                                                <a href="movimientos.xhtml">Consulta de Movimientos</a>
+                                                <a href="button.html">Consulta de Movimientos</a>
                                             </li>
                                         </ul>
                                     </li>
-                                </li>
-                            </ul>
+                                </ul>
+                            </div>
                         </nav>
-                    </div>
-                </aside>  
-                <!--FIN MENU-->
-                <!-- HEADER DESKTOP-->
-                <div class="page-container">
-                    <header class="header-desktop">
-                        <div class="section__content section__content--p30">
-                            <div class="container-fluid">
-                                <div class="header-wrap">
-                                    <div class="header-button">
-                                        <div class="noti-wrap">
-                                            <div class="mess__item">                                                 
-                                            </div>
-                                        </div>
-                                        <div class="account-wrap">
-                                            <div class="account-item clearfix js-item-menu">
-                                                <div class="content">
-                                                    <a class="js-acc-btn" href="#">Usuario</a>
+                    </header>
+
+                    <!--MENU-->
+                    <aside class="menu-sidebar d-none d-lg-block">
+                        <div class="logo">
+                            <a href="#">
+                                <img src="" alt="Banco" />
+                            </a>
+                        </div>
+                        <div class="menu-sidebar__content js-scrollbar1">
+                            <nav class="navbar-sidebar">
+                                <ul class="list-unstyled navbar__list">
+                                    <li class="active has-sub">
+                                        <li>
+                                            <a href="main.xhtml">
+                                                <i class="fas fa-chart-bar"></i>Posición Consolidada</a>
+                                        </li>
+                                        <li class="has-sub">
+                                            <a class="js-arrow" href="#">
+                                                <i class="fas fa-copy"></i>Préstamos</a>
+                                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                                <li>
+                                                    <a href="prestamos.xhtml">Detalle de Préstamos</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-sub">
+                                            <a class="js-arrow" href="#">
+                                                <i class="fas fa-copy"></i>Transferencias</a>
+                                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                                <!--li>
+                                                    <a href="activacion.xhtml">Activación</a>
+                                                </li-->
+                                                <li>
+                                                    <a href="transfDirecta.xhtml">Transferencia Directa</a>
+                                                </li>
+                                                <li>
+                                                    <a href="transfOtros.xhtml">Transferencia Otros</a>
+                                                </li>
+                                                <li>
+                                                    <a href="transfHistorial.xhtml">Historial</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-sub">
+                                            <a class="js-arrow" href="#">
+                                                <i class="fas fa-desktop"></i>Movimientos</a>
+                                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                                <li>
+                                                    <a href="movimientos.xhtml">Consulta de Movimientos</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </aside>  
+                    <!--FIN MENU-->
+                    <!-- HEADER DESKTOP-->
+                    <div class="page-container">
+                        <header class="header-desktop">
+                            <div class="section__content section__content--p30">
+                                <div class="container-fluid">
+                                    <div class="header-wrap">
+                                        <form class="form-header" action="" method="POST">
+                                            <input class="au-input au-input--xl" type="hidden" name="search" placeholder="Search for datas &amp; reports..." />
+
+                                        </form>
+                                        <div class="header-button">
+                                            <div class="noti-wrap">
+                                                <div class="noti__item js-item-menu">
+
                                                 </div>
-                                                <div class="account-dropdown js-dropdown">
-                                                    <div class="info clearfix">
+                                                <div class="noti__item js-item-menu">
 
-                                                        <div class="content">
-                                                            <h5 class="name">
-                                                                <h:outputLabel for="name" value="#{indexController.actual}" />
-                                                            </h5>
-                                                        </div>
+                                                </div>
+                                                <div class="noti__item js-item-menu">
+
+                                                </div>
+                                            </div>
+                                            <div class="account-wrap">
+                                                <div class="account-item clearfix js-item-menu">
+                                                    <div class="image">
+                                                        <img src="images/icon/avatar-07.jpg" alt="John Doe" />
                                                     </div>
-                                                    <div class="account-dropdown__footer">
-                                                        <h:form>
+                                                    <div class="content">
+                                                        <a class="js-acc-btn" href="#">Usuario</a>
+                                                    </div>
+                                                    <div class="account-dropdown js-dropdown">
+                                                        <div class="info clearfix">
 
-                                                            <p:commandLink value = "Cerrar Sesion" actionListener="#{indexController.cerrarSesion()}" action="/index?faces-redirect=true"/>   
-                                                        </h:form>
+                                                            <div class="content">
+                                                                <h5 class="name">
+                                                                    <h:outputLabel for="name" value="#{indexController.actual}" />
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="account-dropdown__footer">
+                                                            <h:form>
 
+                                                                <p:commandLink value = "Cerrar Sesion" actionListener="#{indexController.cerrarSesion()}" action="/index?faces-redirect=true"/>   
+                                                            </h:form>
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -205,46 +218,48 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </header>
-                    <!-- END HEADER DESKTOP-->   
+                        </header>
+                        <!-- END HEADER DESKTOP-->   
 
-                    <ui:insert name="content">
-
+                        <ui:insert name="content">
 
 
-                    </ui:insert>
 
+                        </ui:insert>
 
 
 
 
 
+
+                    </div>
                 </div>
+                <!-- Jquery JS-->
+                <!--script src="vendor/jquery-3.2.1.min.js"></script-->
+                <!-- Bootstrap JS-->
+                <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+                <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+                <!-- Vendor JS       -->
+                <script src="vendor/slick/slick.min.js">
+                </script>
+                <script src="vendor/wow/wow.min.js"></script>
+                <script src="vendor/animsition/animsition.min.js"></script>
+                <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+                </script>
+                <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+                <script src="vendor/counter-up/jquery.counterup.min.js">
+                </script>
+                <script src="vendor/circle-progress/circle-progress.min.js"></script>
+                <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+                <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+                <script src="vendor/select2/select2.min.js">
+                </script>
+                <!-- Main JS-->
+                <script src="js/main.js"></script>
             </div>
-            <!-- Jquery JS-->
-            <!--script src="vendor/jquery-3.2.1.min.js"></script-->
-            <!-- Bootstrap JS-->
-            <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-            <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-            <!-- Vendor JS       -->
-            <script src="vendor/slick/slick.min.js">
-            </script>
-            <script src="vendor/wow/wow.min.js"></script>
-            <script src="vendor/animsition/animsition.min.js"></script>
-            <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-            </script>
-            <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-            <script src="vendor/counter-up/jquery.counterup.min.js">
-            </script>
-            <script src="vendor/circle-progress/circle-progress.min.js"></script>
-            <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-            <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-            <script src="vendor/select2/select2.min.js">
-            </script>
-            <!-- Main JS-->
-            <script src="js/main.js"></script>
+
         </div>
+
     </h:body>
 
 </html>

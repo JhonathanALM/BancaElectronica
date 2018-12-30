@@ -9,6 +9,7 @@ public class CuentasRQ {
     private String tipo;
     private String estado;
     private double saldo;
+    private String ci;
 
     public String getCuenta() {
         return cuenta;
@@ -41,6 +42,14 @@ public class CuentasRQ {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getCi() {
+        return ci;
+    }
+
+    public void setCi(String ci) {
+        this.ci = ci;
     }
     
     

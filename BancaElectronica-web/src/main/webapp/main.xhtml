@@ -12,23 +12,26 @@
 
             <ui:define name="content">
                 <div class="main-content">
-                    <div class="section__content section__content--p30">
+                    <div class="section__content section__content--p40">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-lg-9">
+                                <div class="col-lg-11">
 
                                     <h1>Posición Consolidada</h1> 
                                     <br/>
-                                    <h2><h:outputLabel for="name" value="#{indexController.actual}" /></h2>
 
 
+                                    <div style="border: 1px solid black;">
+
+                                        <h3><h:outputLabel for="name" value="#{indexController.actual}" /></h3>
+
+                                    </div>
+                                    <br/>
+                                    <br/>
                                     <p:dataTable var="item" value="#{cuentaController.items}">
                                         <f:facet name="header">
                                             LISTA DE CUENTAS
                                         </f:facet>
-                                        <p:column headerText="BANCO">
-                                            <h:outputText value="BANQUITO" />
-                                        </p:column>
                                         <p:column headerText="CUENTA">
                                             <h:outputText value="#{item.cuenta}" />
                                         </p:column>
@@ -49,9 +52,6 @@
                                         <f:facet name="header">
                                             LISTA DE PRESTAMOS
                                         </f:facet>
-                                        <p:column headerText="ESTADO">
-                                            <h:outputText value="BANQUITO" />
-                                        </p:column>
                                         <p:column headerText="NUMERO">
                                             <h:outputText value="#{item.numero}" />
                                         </p:column>
