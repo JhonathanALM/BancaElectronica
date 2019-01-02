@@ -2,6 +2,6 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://40.121.87.240:8086/ExternoWS/externo?wsdl" uri="wsdl/localhost_8080/ExternoWS/externo.wsdl"/>
     <system systemId="http://40.121.87.240:8086/ExternoWS/externo?xsd=1" uri="wsdl/localhost_8080/ExternoWS/externo.xsd_1.xsd"/>
-    <system systemId="http://192.168.0.196:9090/Modulo-Cuentas-Pll-web/TransferenciaWs?WSDL" uri="wsdl/192.168.0.196_9090/Modulo-Cuentas-Pll-web/TransferenciaWs.wsdl"/>
-    <system systemId="http://192.168.0.196:9090/Modulo-Cuentas-Pll-web/TransferenciaWs?xsd=1" uri="wsdl/192.168.0.196_9090/Modulo-Cuentas-Pll-web/TransferenciaWs.xsd_1.xsd"/>
+    <system systemId="http://40.87.45.204:9090/Modulo-Cuentas-Pll-web/TransferenciaWs?WSDL" uri="wsdl/192.168.0.196_9090/Modulo-Cuentas-Pll-web/TransferenciaWs.wsdl"/>
+    <system systemId="http://40.87.45.204:9090/Modulo-Cuentas-Pll-web/TransferenciaWs?xsd=1" uri="wsdl/192.168.0.196_9090/Modulo-Cuentas-Pll-web/TransferenciaWs.xsd_1.xsd"/>
 </catalog>

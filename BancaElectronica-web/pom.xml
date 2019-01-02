@@ -156,7 +156,7 @@
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
-                            <wsdlLocation>http://192.168.0.196:9090/Modulo-Cuentas-Pll-web/TransferenciaWs?WSDL</wsdlLocation>
+                            <wsdlLocation>http://40.87.45.204:9090/Modulo-Cuentas-Pll-web/TransferenciaWs?WSDL</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/TransferenciaWs.stale</staleFile>
                         </configuration>
                         <id>wsimport-generate-TransferenciaWs</id>
