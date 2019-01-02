@@ -19,16 +19,17 @@
                                     <h1>Transferencias Interbancarias</h1> 
                                     <div class="card">
                                         <div class="card-body card-block">
-                                            <h:form>
-                                                <!--<div class="card-header">
-                                                    <strong>Origen</strong>
-                                                </div>-->
+                                            <h:form id="form">
+                                                <p:growl id="msgs" showDetail="true"/>
+
                                                 <div class="row form-group">
                                                     <div class="col col-md-3">
                                                         <label for="text-input" class=" form-control-label">Monto:</label>
                                                     </div>
                                                     <div class="col-12 col-md-9">
-                                                        <h:inputText value="#{transaccionExtController.transaccionExt.monto}" id="text-input" class="form-control"></h:inputText>
+                                                        <h:inputText required="true" value="#{transferenciaExtController.transaccionExt.monto}" id="text-input" class="form-control">
+                                                            <f:validateLongRange minimum="1" maximum="10000"></f:validateLongRange>
+                                                        </h:inputText>
                                                     </div>
                                                 </div>
 
@@ -37,7 +38,7 @@
                                                         <label for="op1" class=" form-control-label">De la cuenta:</label>
                                                     </div>
                                                     <div class="col col-md-8">
-                                                        <p:selectOneMenu id="ext" value="#{transaccionExtController.transaccionExt.cuentaOrigen}" required="true" style="width: 100%" >
+                                                        <p:selectOneMenu id="ext" value="#{transferenciaExtController.transaccionExt.cuentaOrigen}" required="true" style="width: 100%" >
                                                             <f:selectItem itemLabel="Seleccione.."/>
                                                             <f:selectItems value="#{cuentaController.items}"
                                                                            var="personaItem"
@@ -57,7 +58,7 @@
                                                         <label for="op1" class=" form-control-label">Banco:</label>
                                                     </div>
                                                     <div class="col col-md-8">
-                                                        <p:selectOneMenu id="cuenta" value="#{transaccionExtController.transaccionExt.banco}" required="true" style="width: 100%" >
+                                                        <p:selectOneMenu id="cuenta" value="#{transferenciaExtController.transaccionExt.banco}" required="true" style="width: 100%" >
                                                             <f:selectItem itemLabel="SELECCIONE UNO.." itemValue=""/>
                                                             <f:selectItem itemLabel="PRODUBANCO" itemValue="PRODUBANCO"/>
                                                             <f:selectItem itemLabel="PACÍFICO" itemValue="PACIFICO"/>
@@ -74,7 +75,7 @@
                                                     <div class="col col-md-9">
                                                         <div class="form-check">
 
-                                                            <p:selectOneRadio value="#{transaccionExtController.transaccionExt.tipoCuenta}">
+                                                            <p:selectOneRadio required="true" value="#{transferenciaExtController.transaccionExt.tipoCuenta}">
                                                                 <f:selectItem itemLabel="AHORROS  " itemValue="Ahorros" />
                                                                 <f:selectItem itemLabel="CORRIENTE" itemValue="Corriente" />
                                                             </p:selectOneRadio>
@@ -87,7 +88,7 @@
                                                         <label  class=" form-control-label">Número de Cuenta del Beneficiario</label>
                                                     </div>
                                                     <div class="col-12 col-md-9">
-                                                        <h:inputText value="#{transaccionExtController.transaccionExt.cuentaDestino}" class="form-control"></h:inputText>
+                                                        <h:inputText required="true" value="#{transferenciaExtController.transaccionExt.cuentaDestino}" class="form-control"></h:inputText>
                                                     </div>
                                                 </div>
 
@@ -97,7 +98,7 @@
                                                         <label  class=" form-control-label">Tipo de identificación:</label>
                                                     </div>
                                                     <div class="col-12 col-md-9">
-                                                        <p:selectOneMenu  value="#{transaccionExtController.transaccionExt.tipoIdentificacion}" style="width: 100%" >
+                                                        <p:selectOneMenu required="true" value="#{transferenciaExtController.transaccionExt.tipoIdentificacion}" style="width: 100%" >
                                                             <f:selectItem itemLabel="CÉDULA" itemValue="CEDULA"/>
                                                             <f:selectItem itemLabel="PASAPORTE" itemValue="PASAPORTE" />
                                                         </p:selectOneMenu>
@@ -109,7 +110,7 @@
                                                         <label class=" form-control-label">Identificación</label>
                                                     </div>
                                                     <div class="col-12 col-md-9">
-                                                        <h:inputText value="#{transaccionExtController.transaccionExt.identificacion}"  class="form-control"></h:inputText>
+                                                        <h:inputText required="true" value="#{transferenciaExtController.transaccionExt.identificacion}"  class="form-control"></h:inputText>
                                                     </div>
                                                 </div>
 
@@ -121,15 +122,24 @@
                                                         <label  class=" form-control-label">Por concepto de: </label>
                                                     </div>
                                                     <div class="col-12 col-md-9">
-                                                        <h:inputText value="#{transaccionExtController.transaccionExt.concepto}" class="form-control"></h:inputText>
+                                                        <h:inputText value="#{transferenciaExtController.transaccionExt.concepto}" class="form-control"></h:inputText>
                                                     </div>
                                                 </div>
 
                                                 <div class="card-footer">
-                                                    <h:commandButton class="btn btn-primary btn-sm" value="ACEPTAR" action="#{transaccionExtController.enviar()}"></h:commandButton>
-                                                </div>
+                                                    <p:commandButton class="btn btn-primary btn-sm" update="form" value="ACEPTAR" action="#{transferenciaExtController.enviar()}">
+
+                                                    </p:commandButton>
+                                                </div>           
                                             </h:form> 
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="copyright">
+                                        <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
                                     </div>
                                 </div>
                             </div>

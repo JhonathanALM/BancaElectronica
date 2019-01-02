@@ -83,6 +83,9 @@ public class IndexController implements Serializable {
         System.out.println("cerrando session....");
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
     }
+    public void nada(){
+        System.out.println("No hice nada");
+    }
 
     public UsuarioRQ obtenerUsuario() throws MalformedURLException, IOException {
         Client client = Client.create();
@@ -116,7 +119,6 @@ public class IndexController implements Serializable {
     
      public String getActual() {
         UsuarioRQ as = (UsuarioRQ) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-        System.out.println("Bienvenido>> : " + as.getNombres()+as.getApellidos());
         return as.getNombres()+" "+as.getApellidos();
     }
 

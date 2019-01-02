@@ -7,45 +7,56 @@ package ec.edu.espe.as.controller;
 
 import ec.edu.espe.as.controller.msg.PrestamoRQ;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+//import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import ec.edu.espe.as.controller.msg.UsuarioRQ;
 import java.util.ArrayList;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.ws.rs.core.MediaType;
+import javax.faces.view.ViewScoped;
 
 /**
  *
  * @author jhona
  */
 @Named(value = "prestamoController")
-@SessionScoped
+@ViewScoped
 public class prestamoController implements Serializable {
 
-     private List<PrestamoRQ> items = null;
-     private final String urlPrestamos="http://40.121.87.240:8086/ServicioPrestamo/api/prestamo/";
+    private List<PrestamoRQ> items;
+    private final String urlPrestamos = "http://40.121.87.240:8086/ServicioPrestamo/api/prestamo/";
+    private PrestamoRQ prq;
+
     public prestamoController() {
     }
-    public List<PrestamoRQ> obtenerPrestamos(String cedula) {
+
+    @PostConstruct
+    public void init() {
+        obtenerPrestamos();
+    }
+
+    public void obtenerPrestamos() {
         Client client = Client.create();
-        List<PrestamoRQ> r = new ArrayList<>();
         WebResource resource = client.resource(urlPrestamos);
-        PrestamoRQ us = resource.path(cedula)
+        UsuarioRQ ar = (UsuarioRQ) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        items= new ArrayList<>();
+        prq = resource.path(ar.getCi())
                 .accept(MediaType.APPLICATION_JSON)
                 .get(PrestamoRQ.class);
-        r.add(us);
-        System.out.println(us.getSaldo());
-        return r;
+        items.add(prq);
+        System.out.println(prq.getSaldo());
+        FacesMessage msg = new FacesMessage("Lista de Prestamos Actializada",items.size()+" prestamos");  
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public List<PrestamoRQ> getItems() {
-        UsuarioRQ ar = (UsuarioRQ) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");        
-        System.out.println("Estoy llenando los prestamos para" + ar.getCi());
-          if (items == null) {
-            items = obtenerPrestamos(ar.getCi());
+        if (items == null) {
+            obtenerPrestamos();
         }
         return items;
     }
@@ -53,5 +64,5 @@ public class prestamoController implements Serializable {
     public void setItems(List<PrestamoRQ> items) {
         this.items = items;
     }
-               
+
 }

@@ -138,7 +138,7 @@
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
-                            <wsdlLocation>http://localhost:8080/ExternoWS/externo?wsdl</wsdlLocation>
+                            <wsdlLocation>http://40.121.87.240:8086/ExternoWS/externo?wsdl</wsdlLocation>
                             <staleFile>${project.build.directory}/jaxws/stale/externo.stale</staleFile>
                         </configuration>
                         <id>wsimport-generate-externo</id>

@@ -28,46 +28,63 @@
                                     </div>
                                     <br/>
                                     <br/>
-                                    <p:dataTable var="item" value="#{cuentaController.items}">
-                                        <f:facet name="header">
-                                            LISTA DE CUENTAS
-                                        </f:facet>
-                                        <p:column headerText="CUENTA">
-                                            <h:outputText value="#{item.cuenta}" />
-                                        </p:column>
-                                        <p:column headerText="TIPO">
-                                            <h:outputText value="#{item.tipo}" />
-                                        </p:column>
-                                        <p:column headerText="ESTADO">
-                                            <h:outputText value="#{item.estado}" />
-                                        </p:column>
-                                        <p:column headerText="SALDO DISPONIBLE">
-                                            <h:outputText value="#{item.saldo}" />
-                                        </p:column>
-                                    </p:dataTable>
-                                    <br/>
-                                    <br/>
+                                    <h:form id="form">
+                                        <p:growl id="msgs" showDetail="true"/>
+                                        <p:dataTable id="table3" widgetVar="items" var="item" value="#{cuentaController.items}" editable="true" style="margin-bottom:20px" >
+                                            <f:facet name="header">
+                                                LISTA DE CUENTAS
+                                            </f:facet>
+                                            <p:column headerText="CUENTA">
+                                                <h:outputText value="#{item.cuenta}" />
+                                            </p:column>
+                                            <p:column headerText="TIPO">
+                                                <h:outputText value="#{item.tipo}" />
+                                            </p:column>
+                                            <p:column headerText="ESTADO">
+                                                <h:outputText value="#{item.estado}" />
+                                            </p:column>
+                                            <p:column headerText="SALDO DISPONIBLE">
+                                                <h:outputText value="#{item.saldo}" />
+                                            </p:column>
+                                        </p:dataTable>
+                                        <br/>
+                                        <p:dataTable id="table2" var="item" value="#{prestamoController.items}">
+                                            <f:facet name="header">
+                                                LISTA DE PRESTAMOS
+                                            </f:facet>
+                                            <p:column headerText="NUMERO">
+                                                <h:outputText value="#{item.numero}" />
+                                            </p:column>
+                                            <p:column headerText="TIPO">
+                                                <h:outputText value="#{item.tipo}" />
+                                            </p:column>
+                                            <p:column headerText="ESTADO">
+                                                <h:outputText value="#{item.estado}" />
+                                            </p:column>
+                                            <p:column headerText="MONTO PROXIMO DE PAGO">
+                                                <h:outputText value="#{item.monto}" />
+                                            </p:column>
+                                            <p:column headerText="FECHA GENERACION PRESTAMO">
+                                                <h:outputText value="#{item.fecha}" />
+                                            </p:column>
+                                            <p:column headerText="SALDO">
+                                                <h:outputText value="#{item.saldo}" />
+                                            </p:column>
+                                        </p:dataTable> 
+                                        <br/>
+                                        <p:commandButton value="Actualizar"  update="form"
+                                                         action="#{cuentaController.obtenerCuentas()}">
+                                            <f:actionListener binding="#{prestamoController.obtenerPrestamos()}" />
+                                        </p:commandButton>
 
-                                    <p:dataTable var="item" value="#{prestamoController.items}">
-                                        <f:facet name="header">
-                                            LISTA DE PRESTAMOS
-                                        </f:facet>
-                                        <p:column headerText="NUMERO">
-                                            <h:outputText value="#{item.numero}" />
-                                        </p:column>
-                                        <p:column headerText="TIPO">
-                                            <h:outputText value="#{item.tipo}" />
-                                        </p:column>
-                                        <p:column headerText="MONTO PROXIMO DE PAGO">
-                                            <h:outputText value="#{item.monto}" />
-                                        </p:column>
-                                        <p:column headerText="FECHA GENERACION PRESTAMO">
-                                            <h:outputText value="#{item.fecha}" />
-                                        </p:column>
-                                        <p:column headerText="SALDO">
-                                            <h:outputText value="#{item.saldo}" />
-                                        </p:column>
-                                    </p:dataTable>                                 
+                                    </h:form>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="copyright">
+                                        <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

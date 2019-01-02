@@ -23,12 +23,10 @@ import javax.ws.rs.core.MediaType;
  *
  * @author jhona
  */
-@Named(value = "hTransaccionController")
-@SessionScoped
-public class hTransaccionController implements Serializable {
+public class hTransferenciaController implements Serializable {
 
     /**
-     * Creates a new instance of hTransaccionController
+     * Creates a new instance of hTransferenciaController
      */
     private List<HTransferenciaRQ> items = null;
     private HTransferenciaRQ ht;
@@ -36,7 +34,7 @@ public class hTransaccionController implements Serializable {
     private Date desde;
     private Date hasta;
 
-    public hTransaccionController() {
+    public hTransferenciaController() {
     }
 
     @PostConstruct

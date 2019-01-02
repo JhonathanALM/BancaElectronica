@@ -10,19 +10,21 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.xml.ws.WebServiceRef;
 /**
  *
  * @author jhona
  */
-@Named(value = "transaccionController")
+@Named(value = "transferenciaController")
 @SessionScoped
-public class transaccionController implements Serializable {
+public class transferenciaController implements Serializable {
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/192.168.0.196_9090/Modulo-Cuentas-Pll-web/TransferenciaWs.wsdl")
     private ec.edu.espe.arquitectura.soap.ws.TransferenciaWs_Service service;
 
-    public transaccionController() {
+    public transferenciaController() {
     }
      private  Transaccion transaccionExt ;
     
@@ -43,6 +45,16 @@ public class transaccionController implements Serializable {
             System.out.println("d:"+this.transaccionExt.getMonto());
             java.lang.String result = port.transferencia(this.transaccionExt.getCuentaOrigen(), this.transaccionExt.getCuentaDestino(), this.transaccionExt.getMonto());
             System.out.println("Result = "+result);
+            if (result.equals("error")) {
+                System.out.println("err");
+                FacesMessage msg = new FacesMessage("Error", "Verifique los datos y vuelva a intentar");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+            } else {
+                System.out.println("noEr");
+                FacesMessage msg = new FacesMessage("Realizado", "Transaccion Realizada con exito");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+                 reset();
+            }
         } catch (Exception ex) {
              System.out.println("algo salio mal :[ ");
         }
@@ -65,6 +77,12 @@ public class transaccionController implements Serializable {
 
     public void setTransaccionExt(Transaccion transaccionExt) {
         this.transaccionExt = transaccionExt;
+    }
+    public void reset(){
+        System.out.println("Reset campos...");
+        transaccionExt.setMonto(0);
+        transaccionExt.setCuentaDestino(null);
+        transaccionExt.setCuentaOrigen(null);     
     }
     
 }

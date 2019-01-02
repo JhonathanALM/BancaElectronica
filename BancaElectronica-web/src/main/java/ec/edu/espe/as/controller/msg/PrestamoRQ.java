@@ -1,9 +1,14 @@
 package ec.edu.espe.as.controller.msg;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @author jhona
  */
 public class PrestamoRQ {
+
     private String estado;
     private String fecha;
     private int id;
@@ -19,7 +24,6 @@ public class PrestamoRQ {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-
 
     public int getId() {
         return id;
@@ -61,8 +65,10 @@ public class PrestamoRQ {
         this.tipo = tipo;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getFecha() throws ParseException {
+        StringBuilder crunchifyBuilder = new StringBuilder();
+        crunchifyBuilder.append(fecha);
+        return crunchifyBuilder.substring(0,10);
     }
 
     public void setFecha(String fecha) {

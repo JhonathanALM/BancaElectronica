@@ -4,14 +4,14 @@ import ec.edu.espe.as.controller.msg.UsuarioRQ;
 import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 /**
  * @author jhona
  */
 @Named
-@ViewScoped
+@SessionScoped
 public class plantillaController implements Serializable {
 
     public void verificarSesion() throws IOException {
