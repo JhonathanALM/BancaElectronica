@@ -19,6 +19,7 @@
                                     <h2>Historial de Transferencias</h2>
                                     <br/><br/>
                                     <h:form>
+                                        <p:growl id="msgs" showDetail="true"/>
                                         <h:panelGrid columns="2" cellpadding="12">                        
                                             <p:outputLabel  value="Desde:(DD/MM/AA)" />
                                             <p:calendar value="#{hTransferenciaController.desde}" showOn="button" />
@@ -34,12 +35,12 @@
                                                     <f:selectItem itemLabel="Seleccione.."/>
                                                     <f:selectItems value="#{cuentaController.items}"
                                                                    var="personaItem"
-                                                                   itemValue="#{personaItem}"
+                                                                   itemValue="#{personaItem.cuenta}"
                                                                    itemLabel="#{personaItem.cuenta}"/>                                                    
                                                 </p:selectOneMenu>
                                             </div>
                                         </div>
-                                        <p:commandButton update="tab" value="Consultar" action="#{hTransferenciaController.obtenerHTransferencias()}" icon="pi pi-check" />
+                                        <p:commandButton update="tab msgs" value="Consultar" action="#{hTransferenciaController.obtenerHTransferencias()}" icon="pi pi-check" />
 
                                         <hr style="width:75%;"></hr>
 

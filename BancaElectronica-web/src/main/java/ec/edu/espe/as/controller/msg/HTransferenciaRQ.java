@@ -1,5 +1,7 @@
 package ec.edu.espe.as.controller.msg;
 
+import java.text.ParseException;
+
 /**
  * @author jhona
  */
@@ -21,11 +23,14 @@ public class HTransferenciaRQ {
         this.cuentaDestino = cuentaDestino;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getFecha() throws ParseException {
+         StringBuilder crunchifyBuilder = new StringBuilder();
+        crunchifyBuilder.append(fecha);
+        return crunchifyBuilder.substring(0,10);
     }
 
     public void setFecha(String fecha) {
+        
         this.fecha = fecha;
     }
 

@@ -29,8 +29,8 @@ public class cuentaController implements Serializable {
 
     private List<CuentasRQ> items = null;
     private CuentasRQ selected= new CuentasRQ();
-    //private final String urlCuentas="http://40.87.45.204:9090/Modulo-Cuentas-Pll-web/api/cuenta/";
-    private final String urlCuentas="http://40.121.87.240:8086/ServicioCuenta/api/cuenta/";
+    private final String urlCuentas="http://40.87.45.204:9090/Modulo-Cuentas-Pll-web/api/cuenta/";
+   // private final String urlCuentas="http://40.121.87.240:8086/ServicioCuenta/api/cuenta/";
     public cuentaController() {
     }
     @PostConstruct
@@ -43,8 +43,8 @@ public class cuentaController implements Serializable {
         Client client = Client.create();    
         System.out.println("");
         WebResource resource = client.resource(urlCuentas);
-        //items = resource.path(ar.getCi());
-        items = resource.path("")
+        items = resource.path(ar.getCi())
+        //items = resource.path("")
                 .accept(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<CuentasRQ>>() {
                 });

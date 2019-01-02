@@ -10,26 +10,30 @@ import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.WebResource;
 import ec.edu.espe.as.controller.msg.HTransferenciaRQ;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+//import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author jhona
  */
+@Named(value = "hTransferenciaController")
+@ViewScoped
 public class hTransferenciaController implements Serializable {
 
     /**
      * Creates a new instance of hTransferenciaController
      */
     private List<HTransferenciaRQ> items = null;
-    private HTransferenciaRQ ht;
+    private HTransferenciaRQ ht =  new HTransferenciaRQ();
     private String pa;
     private Date desde;
     private Date hasta;
@@ -37,25 +41,21 @@ public class hTransferenciaController implements Serializable {
     public hTransferenciaController() {
     }
 
-    @PostConstruct
-    public void init() {        
-        ht = new HTransferenciaRQ();
-    }
-
-    public List<HTransferenciaRQ> obtenerHTransferencias() {
-        System.out.println("Estoy aqui");
+    public void obtenerHTransferencias() {
+        System.out.println("Estoy aqui10.0");
         Client client = Client.create();
         DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
         DateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
-        System.out.println("Deste: " + formatoFecha.format(this.desde) + " hasta: " + formatoFecha.format(this.hasta) + "a la cuenta" + this.pa);
-        WebResource resource = client.resource("http://192.168.0.196:9090/Modulo-Cuentas-Pll-web/api/transaccion/");
+        System.out.println("Deste: " + formatoFecha.format(this.desde) + " hasta: " + formatoFecha.format(this.hasta) + " a la cuenta: " + this.pa);
+        WebResource resource = client.resource("http://40.87.45.204:9090/Modulo-Cuentas-Pll-web/api/transaccion/");
         //System.out.println(desde+"&"+hasta+"&"+this.cuenta);
-        List<HTransferenciaRQ> cuentas = resource.path(formatoFecha.format(this.desde) + "&" + formatoFecha.format(this.hasta) + "&100123")
+        items = resource.path(formatoFecha.format(this.desde) + "&" + formatoFecha.format(this.hasta) + "&"+this.pa)
                 .accept(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<HTransferenciaRQ>>() {
                 });
-        System.out.println(cuentas.size());
-        return cuentas;
+        FacesMessage msg = new FacesMessage("Prestamos", items.size()+" registros\n");  
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        System.out.println(items.size());
     }
 
     public List<HTransferenciaRQ> getItems() {
@@ -90,13 +90,6 @@ public class hTransferenciaController implements Serializable {
         this.hasta = hasta;
     }
 
-    public String llenar() {
-        System.out.println("Boton llenar aplastado..");
-        if (items == null) {
-            items = obtenerHTransferencias();
-        }
-        return "movimientos";
-    }
 
     public String getPa() {
         return pa;
