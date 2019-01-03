@@ -16,34 +16,38 @@
                             <div class="row">
                                 <div class="col-lg-50">
                                     <h1>Detalle de Préstamos</h1>
-                                    <div class="table-responsive table--no-card m-b-380">
-                                        <p:dataTable class="table table-borderless table-striped table-earning" var="dpres" value="">
-                                            <p:column headerText="Banco">
-                                                <h:outputText value="" />
-                                            </p:column>
-                                            <p:column headerText="Préstamo">
-                                                <h:outputText value="" />
-                                            </p:column>
-                                            <p:column headerText="Tipo">
-                                                <h:outputText value="" />
-                                            </p:column>
-                                            <p:column headerText="Fecha de Pago">
-                                                <h:outputText value="" />
-                                            </p:column>
-                                            <p:column headerText="Días Mora">
-                                                <h:outputText value="" />
-                                            </p:column>
-                                            <p:column headerText="Moneda">
-                                                <h:outputText value="" />
-                                            </p:column>
-                                            <p:column headerText="Monto Próximo Pago">
-                                                <h:outputText value="" />
-                                            </p:column>
-                                            <p:column headerText="Saldo Deuda">
-                                                <h:outputText value="" />
-                                            </p:column>
-                                        </p:dataTable>                                    </div>
-                                    <p:commandButton class="au-btn au-btn--block au-btn--green m-b-20"  value=" ACTUALIZAR" action="#{indexController.iniciarSesion()}" />
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <h:form id="form">
+                                        <p:growl id="msgs" showDetail="true"/>
+                                        <p:dataTable id="table5" widgetVar="items" var="item" value="#{detallePrestamoController.items}" editable="true" style="margin-bottom:20px">
+                                                <p:column headerText="Id">
+                                                    <h:outputText value="#{item.id}" />
+                                                </p:column>
+                                                <p:column headerText="Estado">
+                                                    <h:outputText value="#{item.estado}" />
+                                                </p:column>
+                                                <p:column headerText="Fecha Amortización">
+                                                    <h:outputText value="#{item.fechaAmortizacion}" />
+                                                </p:column>
+                                                <p:column headerText="Capital">
+                                                    <h:outputText value="#{item.capital}" />
+                                                </p:column>
+                                                <p:column headerText="Interes">
+                                                    <h:outputText value="#{item.interes}" />
+                                                </p:column>
+                                                <p:column headerText="Valor de la Cuota">
+                                                    <h:outputText value="#{item.valorCuota}" />
+                                                </p:column>
+                                                <p:column headerText="Saldo">
+                                                    <h:outputText value="#{item.saldo}" />
+                                                </p:column>
+                                            </p:dataTable>                                    
+                                        <p:commandButton value="Actualizar"  update="form"
+                                                         action="#{detallePrestamoController.obtenerDetallePrestamos()}">
+                                        </p:commandButton>
+                                    </h:form>
                                 </div>
                             </div>
                         </div>
