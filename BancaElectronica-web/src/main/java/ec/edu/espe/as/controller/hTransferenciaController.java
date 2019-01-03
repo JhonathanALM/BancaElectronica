@@ -42,12 +42,12 @@ public class hTransferenciaController implements Serializable {
     }
 
     public void obtenerHTransferencias() {
-        System.out.println("Estoy aqui10.0");
+        System.out.println("Estoy aqui11.0");
         Client client = Client.create();
         DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
         DateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
         System.out.println("Deste: " + formatoFecha.format(this.desde) + " hasta: " + formatoFecha.format(this.hasta) + " a la cuenta: " + this.pa);
-        WebResource resource = client.resource("http://40.87.45.204:9090/Modulo-Cuentas-Pll-web/api/transaccion/");
+        WebResource resource = client.resource("http://40.87.45.204:9090/Modulo-Cuentas-Pll-web/api/transaccion/HisTransfer/");
         //System.out.println(desde+"&"+hasta+"&"+this.cuenta);
         items = resource.path(formatoFecha.format(this.desde) + "&" + formatoFecha.format(this.hasta) + "&"+this.pa)
                 .accept(MediaType.APPLICATION_JSON)

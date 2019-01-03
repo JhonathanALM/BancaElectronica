@@ -22,7 +22,7 @@ import javax.xml.ws.WebServiceRef;
 @SessionScoped
 public class transferenciaController implements Serializable {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/192.168.0.196_9090/Modulo-Cuentas-Pll-web/TransferenciaWs.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/40.87.45.204_9090/Modulo-Cuentas-Pll-web/TransferenciaWs.wsdl")
     private ec.edu.espe.arquitectura.soap.ws.TransferenciaWs_Service service;
 
     public transferenciaController() {
@@ -77,7 +77,7 @@ public class transferenciaController implements Serializable {
             FacesMessage msg = new FacesMessage(cabecera, mensaje);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception ex) {
-            System.out.println("algo salio mal :[ ");
+            System.out.println("algo salio mal :[ "+ex);
         }
 
     }

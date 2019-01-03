@@ -29,7 +29,8 @@ import javax.faces.view.ViewScoped;
 public class prestamoController implements Serializable {
 
     private List<PrestamoRQ> items;
-    private final String urlPrestamos = "http://40.121.87.240:8086/ServicioPrestamo/api/prestamo/";
+    //private final String urlPrestamos = "http://40.121.87.240:8086/ServicioPrestamo/api/prestamo/";
+    private final String urlPrestamos = "http://13.82.133.134:8084/Prestamo-web/api/verPrestamo/";
     private PrestamoRQ prq;
 
     public prestamoController() {
@@ -45,7 +46,9 @@ public class prestamoController implements Serializable {
         WebResource resource = client.resource(urlPrestamos);
         UsuarioRQ ar = (UsuarioRQ) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         items= new ArrayList<>();
-        prq = resource.path(ar.getCi())
+       // prq = resource.path("1004456891")
+       // prq = resource.path(ar.getIdentificacion())
+        prq = resource.path("1")
                 .accept(MediaType.APPLICATION_JSON)
                 .get(PrestamoRQ.class);
         items.add(prq);

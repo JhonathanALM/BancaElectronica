@@ -30,7 +30,8 @@ public class IndexController implements Serializable {
     private LoginRQ loginRQ;
     private UsuarioRQ usuarioRQ;
     private final String urlSeg="http://40.121.87.240:8086/Banca-web/api/usuario";
-    private final String urlKyc="http://40.121.87.240:8086/ServicioPersona/api/persona/";
+    //private final String urlKyc="http://40.121.87.240:8086/ServicioPersona/api/persona/";
+    private final String urlKyc="http://kyc.strangled.net:8080/KYC-mongo-rest-web/api/cliente/cedula/";
     private String c;
     @PostConstruct
     public void init() {
@@ -94,8 +95,7 @@ public class IndexController implements Serializable {
         UsuarioRQ us = resource.path(c)
                 .accept(MediaType.APPLICATION_JSON)
                 .get(UsuarioRQ.class);
-        System.out.println("nombre:"+us.getNombres());
-        System.out.println("apellido:"+us.getApellidos());
+        System.out.println("usuario:"+us.toString());
         return us;
     }
     

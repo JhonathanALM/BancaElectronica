@@ -20,7 +20,7 @@ public class plantillaController implements Serializable {
             
            
             UsuarioRQ u = (UsuarioRQ) context.getExternalContext().getSessionMap().get("usuario");
-            System.out.println("Este usuario va -> " + u.getCi());
+            System.out.println("Este usuario va -> " + u.getIdentificacion());
             if (u == null) {
                 context.getExternalContext().redirect("./../permisos.xhtml");
 

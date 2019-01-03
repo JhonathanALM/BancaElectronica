@@ -13,7 +13,7 @@ public class PrestamoRQ {
     private String fecha;
     private int id;
     private double monto;
-    private double numero;
+    private int numero;
     private double saldo;
     private String tipo;
 
@@ -41,11 +41,11 @@ public class PrestamoRQ {
         this.monto = monto;
     }
 
-    public double getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(double numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 

@@ -5,19 +5,20 @@ package ec.edu.espe.as.controller.msg;
  */
 public class UsuarioRQ {
     
-    private String ci;
+    private String codigo;
     
     private String nombres;
     private String apellidos;
    
-    private String correo;
+    private String correoElectronico;
+    private String identificacion;
 
-    public String getCi() {
-        return ci;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setCi(String ci) {
-        this.ci = ci;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombres() {
@@ -36,19 +37,26 @@ public class UsuarioRQ {
         this.apellidos = apellidos;
     }
 
-
-
-    public String getCorreo() {
-        return correo;
+    public String getCorreoElectronico() {
+        return correoElectronico;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
     }
 
+    public String getIdentificacion() {
+        return identificacion;
+    }
 
-    
-    
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+    @Override
+    public String toString() {
+        return "UsuarioRQ{" + "codigo=" + codigo + ", nombres=" + nombres + ", apellidos=" + apellidos + ", correoElectronico=" + correoElectronico + ", identificacion=" + identificacion + '}';
+    }
     
 
 }

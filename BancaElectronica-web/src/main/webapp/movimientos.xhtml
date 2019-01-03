@@ -10,16 +10,16 @@
         <ui:composition template="./templateDashboard.xhtml">
 
             <ui:define name="content">
-
                 <div class="main-content">
                     <div class="section__content section__content--p30">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-9">
 
-                                    <h2>Historial de MOVIMIENTOS</h2>
+                                    <h2>Historial de Movimientos</h2>
                                     <br/><br/>
                                     <h:form>
+                                        <p:growl id="msgs" showDetail="true"/>
                                         <h:panelGrid columns="2" cellpadding="12">                        
                                             <p:outputLabel  value="Desde:(DD/MM/AA)" />
                                             <p:calendar value="#{hTransferenciaController.desde}" showOn="button" />
@@ -40,31 +40,30 @@
                                                 </p:selectOneMenu>
                                             </div>
                                         </div>
+                                        <p:commandButton update="tab msgs" value="Consultar" action="#{hTransferenciaController.obtenerHTransferencias()}" icon="pi pi-check" />
 
-                                        <p:commandButton value="Consultar" action="#{hTransferenciaController.llenar()}" icon="pi pi-check" />
+                                        <hr style="width:75%;"></hr>
+
+                                        <p:dataTable id="tab" var="item" value="#{hTransferenciaController.items}">
+                                            <p:column headerText="FECHA">
+                                                <h:outputText value="#{item.fecha}" />
+                                            </p:column>
+                                            <p:column headerText="DOCUMENTO">
+                                                <h:outputText value="#{item.documento}" />
+                                            </p:column>
+                                            <p:column headerText="TIPO">
+                                                <h:outputText value="#{item.tipo}" />
+                                            </p:column>
+                                            <p:column headerText="VALOR">
+                                                <h:outputText value="#{item.valor}" />
+                                            </p:column>
+                                            <p:column headerText="SALDO">
+                                                <h:outputText value="#{item.saldo}" />
+                                            </p:column>
+
+                                        </p:dataTable>
+
                                     </h:form>
-                                    <hr style="width:75%;"></hr>
-
-                                    <p:dataTable var="item" value="#{hTransferenciaController.items}">
-                                        <p:column headerText="FECHA">
-                                            <h:outputText value="#{item.fecha}" />
-                                        </p:column>
-                                        <p:column headerText="DOCUMENTO">
-                                            <h:outputText value="#{item.documento}" />
-                                        </p:column>
-                                        <p:column headerText="TIPO">
-                                            <h:outputText value="#{item.tipo}" />
-                                        </p:column>
-                                        <p:column headerText="VALOR">
-                                            <h:outputText value="#{item.valor}" />
-                                        </p:column>
-                                        <p:column headerText="SALDO">
-                                            <h:outputText value="#{item.saldo}" />
-                                        </p:column>
-
-                                    </p:dataTable>
-
-
                                 </div>
 
 
@@ -79,7 +78,6 @@
                         </div>
                     </div>
                 </div>
-
             </ui:define>
 
         </ui:composition>
