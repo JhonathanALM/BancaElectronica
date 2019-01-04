@@ -26,7 +26,7 @@
                                                         <label for="text-input" class=" form-control-label">Monto:</label>
                                                     </div>
                                                     <div class="col-12 col-md-9">
-                                                        <h:inputText value="#{transferenciaController.transaccionExt.monto}" id="text-input" class="form-control">
+                                                        <h:inputText required="true" value="#{transferenciaController.transaccionExt.monto}" id="text-input" class="form-control">
                                                             <f:validateLongRange minimum="1" maximum="10000"></f:validateLongRange>
                                                         </h:inputText>
                                                     </div>

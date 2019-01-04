@@ -14,6 +14,7 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -58,8 +59,9 @@ public class hTransferenciaController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, msg);
             System.out.println(items.size());
         } catch (Exception e) {
-            FacesMessage msg = new FacesMessage("Error", items.size() + " Error interno del sistema");
+            FacesMessage msg = new FacesMessage("Error", " Datos No Encontrados");
             FacesContext.getCurrentInstance().addMessage(null, msg);
+            items.clear();
             System.out.println("E: "+e);
         }
 
