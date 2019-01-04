@@ -18,7 +18,6 @@ public class DetallePrestamoRQ {
     private double saldo;
     private String fechaAmortizacion;
     private String estado;
-    private int preId;
     private int numero;
 
     public int getId() {
@@ -77,14 +76,6 @@ public class DetallePrestamoRQ {
 
     public void setEstado(String estado) {
         this.estado = estado;
-    }
-
-    public int getPreId() {
-        return preId;
-    }
-
-    public void setPreId(int preId) {
-        this.preId = preId;
     }
 
     public int getNumero() {

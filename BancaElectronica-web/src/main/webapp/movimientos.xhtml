@@ -22,16 +22,16 @@
                                         <p:growl id="msgs" showDetail="true"/>
                                         <h:panelGrid columns="2" cellpadding="12">                        
                                             <p:outputLabel  value="Desde:(DD/MM/AA)" />
-                                            <p:calendar value="#{hTransferenciaController.desde}" showOn="button" />
+                                            <p:calendar value="#{hMovimientoController.desde}" showOn="button" />
 
                                             <p:outputLabel  value="Hasta:(DD/MM/AA)" />
-                                            <p:calendar value="#{hTransferenciaController.hasta}" showOn="button" />
+                                            <p:calendar value="#{hMovimientoController.hasta}" showOn="button" />
                                         </h:panelGrid>     
                                         <br/>
                                         <div class="row form-group">
                                               De la cuenta:
                                             <div class="col col-md-8">
-                                                <p:selectOneMenu id="ext" value="#{hTransferenciaController.pa}" required="true" style="width: 100%" >
+                                                <p:selectOneMenu id="ext" value="#{hMovimientoController.pa}" required="true" style="width: 100%" >
                                                     <f:selectItem itemLabel="Seleccione.."/>
                                                     <f:selectItems value="#{cuentaController.items}"
                                                                    var="personaItem"
@@ -40,11 +40,11 @@
                                                 </p:selectOneMenu>
                                             </div>
                                         </div>
-                                        <p:commandButton update="tab msgs" value="Consultar" action="#{hTransferenciaController.obtenerHTransferencias()}" icon="pi pi-check" />
+                                        <p:commandButton update="tab msgs" value="Consultar" action="#{hMovimientoController.obtenerHmovimientos()}" icon="pi pi-check" />
 
                                         <hr style="width:75%;"></hr>
 
-                                        <p:dataTable id="tab" var="item" value="#{hTransferenciaController.items}">
+                                        <p:dataTable id="tab" var="item" value="#{hMovimientoController.items}">
                                             <p:column headerText="FECHA">
                                                 <h:outputText value="#{item.fecha}" />
                                             </p:column>

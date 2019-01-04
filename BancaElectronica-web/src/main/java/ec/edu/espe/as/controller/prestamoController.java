@@ -53,8 +53,9 @@ public class prestamoController implements Serializable {
                 .get(PrestamoRQ.class);
         items.add(prq);
         System.out.println(prq.getSaldo());
-        FacesMessage msg = new FacesMessage("Lista de Prestamos Actializada",items.size()+" prestamos");  
+        FacesMessage msg = new FacesMessage("Lista de Prestamos Actializada",items.size()+" prestamos");          
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("prestamo", prq);
     }
 
     public List<PrestamoRQ> getItems() {

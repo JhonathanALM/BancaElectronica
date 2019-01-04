@@ -25,9 +25,9 @@ import javax.ws.rs.core.MediaType;
  *
  * @author jhona
  */
-@Named(value = "hTransferenciaController")
+@Named(value = "hMovimientoController")
 @ViewScoped
-public class hTransferenciaController implements Serializable {
+public class hMovimientoController implements Serializable {
 
     /**
      * Creates a new instance of hTransferenciaController
@@ -38,17 +38,17 @@ public class hTransferenciaController implements Serializable {
     private Date desde;
     private Date hasta;
 
-    public hTransferenciaController() {
+    public hMovimientoController() {
     }
 
-    public void obtenerHTransferencias() {
+    public void obtenerHmovimientos() {
         System.out.println("Estoy aqui11.0");
         Client client = Client.create();
         DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
         DateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
-        System.out.println("Deste2: " + formatoFecha.format(this.desde) + " hasta: " + formatoFecha.format(this.hasta) + " a la cuenta: " + this.pa);
+        System.out.println("Deste: " + formatoFecha.format(this.desde) + " hasta: " + formatoFecha.format(this.hasta) + " a la cuenta: " + this.pa);
         try {
-            WebResource resource = client.resource("http://40.87.45.204:9090/Modulo-Cuentas-Pll-web/api/transaccion/HisTransfer/");
+            WebResource resource = client.resource("http://40.87.45.204:9090/Modulo-Cuentas-Pll-web/api/transaccion/");
             //System.out.println(desde+"&"+hasta+"&"+this.cuenta);
             items = resource.path(formatoFecha.format(this.desde) + "&" + formatoFecha.format(this.hasta) + "&" + this.pa)
                     .accept(MediaType.APPLICATION_JSON)
@@ -60,7 +60,7 @@ public class hTransferenciaController implements Serializable {
         } catch (Exception e) {
             FacesMessage msg = new FacesMessage("Error", items.size() + " Error interno del sistema");
             FacesContext.getCurrentInstance().addMessage(null, msg);
-            System.out.println("E: "+e);
+            System.out.println("E: " + e);
         }
 
     }

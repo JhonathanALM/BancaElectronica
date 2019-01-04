@@ -25,14 +25,15 @@ import javax.ws.rs.core.MediaType;
 @Named
 @SessionScoped
 public class IndexController implements Serializable {
-    
 
     private LoginRQ loginRQ;
     private UsuarioRQ usuarioRQ;
-    private final String urlSeg="http://40.121.87.240:8086/Banca-web/api/usuario";
+    //private final String urlSeg="http://40.121.87.240:8086/Banca-web/api/usuario";
+    private final String urlSeg = "http://137.135.107.221:8080/SegNotP2v1-web/api/validarLogin";
     //private final String urlKyc="http://40.121.87.240:8086/ServicioPersona/api/persona/";
-    private final String urlKyc="http://kyc.strangled.net:8080/KYC-mongo-rest-web/api/cliente/cedula/";
+    private final String urlKyc = "http://kyc.strangled.net:8080/KYC-mongo-rest-web/api/cliente/cedula/";
     private String c;
+
     @PostConstruct
     public void init() {
         loginRQ = new LoginRQ();
@@ -47,26 +48,31 @@ public class IndexController implements Serializable {
             conn.setDoOutput(true);
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
-            String in = "{\"clave\":\"" + this.loginRQ.getClave() + "\",\"usuario\":\"" + this.loginRQ.getUsuario() + "\"}";
+            String in = "{\"clave\":\"" + this.loginRQ.getClave() + "\",\"usuario\":\"" + this.loginRQ.getUsuario() + "\",\"rol\":\"UsuarioBancaElectronica\"}";
+            //String in = "{\"clave\":\"" + this.loginRQ.getClave() + "\",\"usuario\":\"" + this.loginRQ.getUsuario() + "\"}";
             OutputStream os = conn.getOutputStream();
             os.write(in.getBytes());
             os.flush();
             System.out.println("input: " + in);
             System.out.println("Mensaje de respuesta: " + conn.getResponseCode());
-            BufferedReader inp = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String line = null;
+            String ss = conn.getResponseCode() + "";
             StringBuilder crunchifyBuilder = new StringBuilder();
+            if (!ss.equals("401")) {
+                BufferedReader inp = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String line = null;
                 while ((line = inp.readLine()) != null) {
-                    crunchifyBuilder.append(line);                    
+                    crunchifyBuilder.append(line);
                 }
-              
-             System.out.println("Data Received: " + crunchifyBuilder.toString()); 
-             System.out.println("substring is = " + crunchifyBuilder.substring(22, 32));
-            if (conn.getResponseCode() == 200) {
-                c= crunchifyBuilder.substring(22, 32);
+
+                System.out.println("Data Received: " + crunchifyBuilder.toString());
+                System.out.println("substring is5= " + crunchifyBuilder.substring(7, 17));
+            }
+
+            if (conn.getResponseCode() == 202) {
+                c = crunchifyBuilder.substring(7, 17);
                 redireccion = "/main?faces-redirect=true";
-                lg=this.obtenerUsuario();
-                 Client client = Client.create();        
+                lg = this.obtenerUsuario();
+                Client client = Client.create();
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", lg);
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Credenciales Incorrectas"));
@@ -84,7 +90,8 @@ public class IndexController implements Serializable {
         System.out.println("cerrando session....");
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
     }
-    public void nada(){
+
+    public void nada() {
         System.out.println("No hice nada");
     }
 
@@ -95,11 +102,9 @@ public class IndexController implements Serializable {
         UsuarioRQ us = resource.path(c)
                 .accept(MediaType.APPLICATION_JSON)
                 .get(UsuarioRQ.class);
-        System.out.println("usuario:"+us.toString());
+        System.out.println("usuario:" + us.toString());
         return us;
     }
-    
-    
 
     public LoginRQ getLoginRQ() {
         return loginRQ;
@@ -116,10 +121,10 @@ public class IndexController implements Serializable {
     public void setUsuarioRQ(UsuarioRQ usuarioRQ) {
         this.usuarioRQ = usuarioRQ;
     }
-    
-     public String getActual() {
+
+    public String getActual() {
         UsuarioRQ as = (UsuarioRQ) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-        return as.getNombres()+" "+as.getApellidos();
+        return as.getNombres() + " " + as.getApellidos();
     }
 
 }

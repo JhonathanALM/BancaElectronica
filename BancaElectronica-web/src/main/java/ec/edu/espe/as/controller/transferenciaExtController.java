@@ -8,9 +8,13 @@ package ec.edu.espe.as.controller;
 import com.banco.Externo_Service;
 import com.banco.Transaccion;
 import ec.edu.espe.arquitectura.soap.ws.TransferenciaWs_Service;
+import ec.edu.espe.as.controller.msg.UsuarioRQ;
+import java.io.OutputStream;
 import javax.inject.Named;
 //import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -27,10 +31,10 @@ public class transferenciaExtController implements Serializable {
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/40.87.45.204_9090/Modulo-Cuentas-Pll-web/TransferenciaWs.wsdl")
     private TransferenciaWs_Service service;
+    private final String urlSeg = "http://137.135.107.221:8080/SegNotP2v1-web/api/notificacion";
 
-  //  @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ExternoWS/externo.wsdl")
-  //  private Externo_Service service;
-
+    //  @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/ExternoWS/externo.wsdl")
+    //  private Externo_Service service;
     /**
      * Creates a new instance of transferenciaExtController
      */
@@ -43,11 +47,11 @@ public class transferenciaExtController implements Serializable {
     @PostConstruct
     public void init() {
         transaccionExt = new Transaccion();
-        
+
     }
 
     public void enviar() {
-       /* try { // Call Web Service Operation
+        /* try { // Call Web Service Operation
             com.banco.Externo port = service.getExternoPort();
             String result = port.transferir(this.transaccionExt);
             System.out.println(result);
@@ -64,8 +68,8 @@ public class transferenciaExtController implements Serializable {
         } catch (Exception ex) {
             System.out.println("algo salio mal :[ " + ex);
         } */
-       
-       try {
+
+        try {
             ec.edu.espe.arquitectura.soap.ws.TransferenciaWs port = service.getTransferenciaWsPort();
             double monto = 0.0d;
             // TODO process result here
@@ -81,6 +85,7 @@ public class transferenciaExtController implements Serializable {
                     System.out.println("201");
                     cabecera = "Realizado";
                     mensaje = "Transaccion Realizada con exito";
+                    EnviarNotificacion(this.transaccionExt.getCuentaOrigen(),this.transaccionExt.getMonto());
                     reset();
                     break;
                 case "400":
@@ -106,9 +111,9 @@ public class transferenciaExtController implements Serializable {
             FacesMessage msg = new FacesMessage(cabecera, mensaje);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception ex) {
-            System.out.println("algo salio mal :[ "+ex);
+            System.out.println("algo salio mal :[ " + ex);
         }
-       
+
     }
 
     public Transaccion getTransaccionExt() {
@@ -118,14 +123,41 @@ public class transferenciaExtController implements Serializable {
     public void setTransaccionExt(Transaccion transaccionExt) {
         this.transaccionExt = transaccionExt;
     }
-    public void reset(){
+
+    public void reset() {
         System.out.println("Reset campos...");
         transaccionExt.setMonto(0);
         transaccionExt.setBanco(null);
         transaccionExt.setConcepto(null);
         transaccionExt.setCuentaDestino(null);
         transaccionExt.setCuentaOrigen(null);
-        transaccionExt.setIdentificacion(null);        
+        transaccionExt.setIdentificacion(null);
     }
 
+       public void EnviarNotificacion(String c, Double d) {
+        System.out.println("Enviando notificacion...");
+          UsuarioRQ as = (UsuarioRQ) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+
+        try {
+            URL url = new URL(urlSeg);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            String in = "{\n"
+                    + "\"userId\":\""+as.getIdentificacion()+"\",\n"
+                    + "\"numCuenta\":\""+c+"\",\n"
+                    + "\"tipo\":\"Transaccion Interna\",\n"
+                    + "\"monto\":\""+d+"\"\n"
+                    + "}";
+            OutputStream os = conn.getOutputStream();
+            os.write(in.getBytes());
+            os.flush();
+            System.out.println("input: " + in);
+            System.out.println("Mensaje de respuesta: " + conn.getResponseCode());
+
+        } catch (Exception e) {
+            System.out.println("notificacion Error" + e);
+        }
+    }
 }
